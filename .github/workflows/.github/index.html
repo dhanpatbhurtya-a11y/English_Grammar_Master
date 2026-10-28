@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Grammar Master — Parts 1–5</title>
+<style>
+:root{--navy:#12213a;--blue:#2459a9;--sky:#eaf2ff;--gold:#f2b544;--ink:#172033;--muted:#64748b;--paper:#fff;--bg:#f3f6fb;--green:#147d52;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(120deg,#10213c,#2459a9);color:#fff;padding:22px 16px 18px}header h1{margin:0;font-size:clamp(1.45rem,4vw,2.2rem)}header p{margin:6px 0 0;color:#e3edff}
+.wrap{max-width:1100px;margin:auto;padding:14px}.notice{background:#fff7df;border-left:5px solid var(--gold);padding:12px 14px;border-radius:8px;margin:12px 0}
+.topicbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin:12px 0;max-height:420px;overflow:auto;padding:2px}.topicbtn{border:1px solid #cbd5e1;background:white;padding:12px 6px;border-radius:10px;font-weight:750;color:var(--navy);cursor:pointer}.topicbtn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.card{background:var(--paper);border:1px solid #e1e7f0;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 3px 12px #0d244008}.card h2,.card h3{margin-top:0;color:var(--navy)}.tabs{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.tab{border:1px solid #cbd5e1;background:#f8fafc;border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:650}.tab.active{background:#dbeafe;border-color:#7da8ef;color:#173e83}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{background:#f8fbff;border:1px solid #dbe7f7;border-radius:10px;padding:12px}.stat b{display:block;font-size:1.4rem;color:var(--blue)}
+input,select,button{font:inherit}input[type=search],select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;background:white}.controls{display:grid;grid-template-columns:2fr 1fr;gap:8px;margin:10px 0}
+.item{padding:13px 0;border-bottom:1px solid #e7edf5}.item:last-child{border-bottom:0}.badge{display:inline-block;font-size:.75rem;background:#e8efff;color:#244a91;padding:2px 8px;border-radius:99px;margin-bottom:5px}.en{font-weight:650}.hi{color:#475569;margin-top:4px}.answer{display:none;background:#eaf8f0;border-left:4px solid #15945e;padding:9px 11px;margin-top:8px;border-radius:6px}.answer.show{display:block}.btn{border:0;background:var(--blue);color:white;border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:650}.btn.secondary{background:#e7eefb;color:#1e4381}.btn.light{background:#eef2f7;color:#26364d}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.question{padding:14px;border:1px solid #dce5f1;border-radius:10px;margin:10px 0}.question label{display:block;margin:5px 0}.feedback{font-weight:700;margin-top:8px}.correct{color:var(--green)}.wrong{color:var(--red)}.small{font-size:.9rem;color:var(--muted)}.footer{text-align:center;color:var(--muted);padding:20px 8px;font-size:.88rem}
+table{border-collapse:collapse;width:100%;margin:8px 0}th,td{border:1px solid #d9e2ef;padding:8px;text-align:left}th{background:#edf3fc}
+
+@media(max-width:650px){.topicbar{grid-template-columns:repeat(2,minmax(0,1fr))}.topicbtn:last-child{grid-column:auto}.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.wrap{padding:10px}header{padding:18px 12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>📘 English Grammar Master</h1>
+<p>Advanced Teaching • Hindi + English • Offline learning</p>
+</div></header>
+<main class="wrap">
+<div class="notice"><b>भाई, सीखने का सही तरीका:</b> पहले नियम समझो → उदाहरण पढ़ो → उत्तर का कारण देखो → फिर Exercise हल करो। यह सॉफ्टवेयर एक ही HTML फ़ाइल में ऑफलाइन चलता है। उदाहरणों में GK facts को सामान्यतः विश्वसनीय, व्यापक रूप से स्वीकृत तथ्यों तक सीमित रखा गया है।</div>
+<div class="topicbar" id="topicbar"></div>
+<section class="card" id="lesson"></section>
+<section class="grid">
+<div class="stat"><span>इस टॉपिक के उदाहरण</span><b id="exCount">500</b><small>चुने हुए उदाहरण और पैटर्न</small></div>
+<div class="stat"><span>इस टॉपिक की अभ्यास सामग्री</span><b id="quizCount">500</b><small>अभ्यास और उत्तर सहित</small></div>
+</section>
+<div class="tabs" id="tabs">
+<button class="tab active" data-view="lessonview">📖 Lesson</button>
+<button class="tab" data-view="examples">💡 Practice Examples</button>
+<button class="tab" data-view="practice">✍️ Practice Exercises</button>
+<button class="tab" data-view="verbforms">🔤 Verb Forms Lab</button>
+<button class="tab" data-view="test">🏆 Quick Test</button>
+</div>
+<section class="card" id="content"></section>
+<div class="footer">English Grammar Master • Parts 1–5 • Offline HTML • Original explanations and examples informed by the topic coverage of Wren & Martin. This is a teaching companion, not a reproduction of the book. अपनी कॉपी में वाक्य लिखकर अभ्यास करें।</div>
+</main>
+<script>
+const topics=[
+{key:'tense',name:'Tense',emoji:'⏳',intro:'Tense समय और action/state के बीच संबंध बताता है। केवल time-word देखकर tense न चुनें; sentence का meaning और context भी देखें।',
+rules:[
+['Present Simple','आदत, सामान्य सत्य, routine: Subject + V1(s/es).','The Earth revolves around the Sun.','पृथ्वी सूर्य की परिक्रमा करती है।'],
+['Present Continuous','अभी जारी काम: am/is/are + V-ing.','Scientists are studying distant galaxies.','वैज्ञानिक दूर की आकाशगंगाओं का अध्ययन कर रहे हैं।'],
+['Present Perfect','बीते काम का वर्तमान से संबंध: has/have + V3.','Researchers have discovered a new species.','शोधकर्ताओं ने एक नई प्रजाति खोजी है।'],
+['Present Perfect Continuous','बीते समय से अब तक जारी काम: has/have been + V-ing.','The team has been collecting data for months.','टीम कई महीनों से आँकड़े इकट्ठे कर रही है।'],
+['Past Simple','पूरा हुआ बीता काम: V2.','India launched Chandrayaan-3 in 2023.','भारत ने 2023 में चंद्रयान-3 लॉन्च किया।'],
+['Past Continuous','बीते समय पर जारी काम: was/were + V-ing.','The students were observing the lunar eclipse.','विद्यार्थी चंद्र ग्रहण देख रहे थे।'],
+['Past Perfect','बीते दूसरे काम से पहले पूरा काम: had + V3.','The train had left before we reached the station.','हमारे स्टेशन पहुँचने से पहले ट्रेन जा चुकी थी।'],
+['Past Perfect Continuous','बीते बिंदु तक जारी अवधि: had been + V-ing.','They had been waiting for an hour when the bus arrived.','बस आने पर वे एक घंटे से इंतज़ार कर रहे थे।'],
+['Future Simple','भविष्य का निर्णय/अनुमान: will + V1.','The museum will open a new gallery tomorrow.','संग्रहालय कल नई गैलरी खोलेगा।'],
+['Future Continuous','भविष्य के समय पर जारी काम: will be + V-ing.','At noon, the researchers will be testing the instrument.','दोपहर में शोधकर्ता उपकरण की जाँच कर रहे होंगे।'],
+['Future Perfect','भविष्य के बिंदु तक पूरा काम: will have + V3.','By Friday, the class will have completed the project.','शुक्रवार तक कक्षा परियोजना पूरी कर चुकी होगी।'],
+['Future Perfect Continuous','भविष्य के बिंदु तक जारी अवधि: will have been + V-ing.','By June, she will have been teaching for ten years.','जून तक उसे पढ़ाते हुए दस साल हो चुके होंगे।']],
+extra:'Advanced note: time clauses with when, before, after, until, as soon as में future meaning होने पर भी अक्सर present form आता है: “When the bell rings, we will leave.” Stative verbs (know, believe, own) सामान्यतः continuous में नहीं आते, हालांकि meaning बदलने पर कुछ verbs आ सकते हैं.'},
+{key:'narration',name:'Narration',emoji:'🗣️',intro:'Direct Speech में वक्ता के वास्तविक शब्द quotation marks में होते हैं। Indirect Speech में वही बात reporting structure के अनुसार बताई जाती है। Meaning, time, pronouns और context सब जाँचें।',
+rules:[
+['Statement','said/told + (that) + clause. “Tell” के साथ सामान्यतः object चाहिए।','Mira said, “I am ready.” → Mira said that she was ready.','मीरा ने कहा कि वह तैयार थी।'],
+['Question','asked/enquired + if/whether या wh-word; indirect question में statement word order.','He asked, “Where do you live?” → He asked where I lived.','उसने पूछा कि मैं कहाँ रहता था।'],
+['Yes/No Question','asked + if/whether; do/does/did हटकर सही tense आता है।','She asked, “Did you see the comet?” → She asked whether I had seen the comet.','उसने पूछा कि क्या मैंने धूमकेतु देखा था।'],
+['Command / Request','ordered, told, requested, advised + object + to-infinitive.','The coach said, “Run faster.” → The coach urged us to run faster.','कोच ने हमें तेज दौड़ने को कहा।'],
+['Negative Command','told/ordered + object + not to + V1.','Mother said, “Do not waste water.” → Mother told us not to waste water.','माँ ने पानी बर्बाद न करने को कहा।'],
+['Exclamation','exclaimed with joy/sorrow/surprise; भाव को clause में व्यक्त करें।','He said, “What a beautiful nebula!” → He exclaimed that the nebula was very beautiful.','उसने आश्चर्य से कहा कि नेबुला बहुत सुंदर था।'],
+['Universal Truth','सामान्य सत्य होने पर tense बदलना आवश्यक नहीं।','The teacher said, “Water boils at 100°C at standard atmospheric pressure.” → The teacher said that water boils at 100°C at standard atmospheric pressure.','सामान्य सत्य का tense अक्सर वही रहता है।'],
+['Reporting Verb in Present','Reporting verb present/future में हो तो tense backshift अक्सर नहीं होता।','She says, “I love science.” → She says that she loves science.','वह कहती है कि उसे विज्ञान पसंद है।']],
+extra:'Advanced note: backshift mechanical नहीं है। Current truth, still-valid information, reporting verb का tense और intended meaning देखें। “Could, would, should, might” जैसे forms कई संदर्भों में नहीं बदलते। “Today/now/here” तभी बदलें जब reporting context बदल गया हो.'},
+{key:'voice',name:'Voice',emoji:'🔁',intro:'Active Voice में subject action करता है; Passive Voice में focus action के receiver/result पर होता है। Passive तभी बनता है जब verb का object या उपयुक्त object-like complement हो।',
+rules:[
+['Basic Passive','Object + be (same tense) + V3 + (by + agent).','Scientists measure air quality. → Air quality is measured by scientists.','वैज्ञानिक वायु गुणवत्ता मापते हैं → वायु गुणवत्ता मापी जाती है।'],
+['Present Continuous','am/is/are being + V3.','The team is mapping the ocean floor. → The ocean floor is being mapped by the team.','समुद्र तल का नक्शा बनाया जा रहा है।'],
+['Past Simple','was/were + V3.','The agency launched the satellite. → The satellite was launched by the agency.','उपग्रह एजेंसी द्वारा लॉन्च किया गया।'],
+['Present Perfect','has/have been + V3.','Researchers have recorded the signal. → The signal has been recorded.','सिग्नल दर्ज किया जा चुका है।'],
+['Modal Passive','modal + be + V3.','We must protect wetlands. → Wetlands must be protected.','आर्द्रभूमियों की रक्षा करनी चाहिए।'],
+['Perfect Modal Passive','modal + have been + V3.','They may have damaged the sample. → The sample may have been damaged.','नमूना क्षतिग्रस्त हुआ हो सकता है।'],
+['Imperative','Let + object + be + V3, या natural instruction passive.','Store the vaccine at the required temperature. → The vaccine should be stored at the required temperature.','वैक्सीन को आवश्यक तापमान पर रखा जाना चाहिए।'],
+['Two Objects','कभी दोनों objects में से किसी एक को subject बनाया जा सकता है।','The guide gave us a map. → We were given a map by the guide.','गाइड ने हमें नक्शा दिया।']],
+extra:'Advanced note: “happen, arrive, sleep, die” जैसे intransitive verbs का सामान्य passive नहीं बनता। “People believe that…” में “It is believed that…” और “The discovery is believed to…” जैसे reporting passives संभव हैं। Passive का उद्देश्य focus बदलना है, हर sentence को passive बनाना नहीं।'},
+{key:'modals',name:'Modals',emoji:'🧭',intro:'Modals speaker का attitude दिखाते हैं: ability, permission, possibility, advice, obligation, deduction, willingness और politeness। Modal के बाद सामान्यतः base verb (V1) आता है।',
+rules:[
+['Can / Could','ability, informal permission, possibility, polite request.','Some birds can navigate using Earth’s magnetic field.','कुछ पक्षी पृथ्वी के चुंबकीय क्षेत्र से दिशा पहचान सकते हैं।'],
+['May / Might','permission या possibility; might अक्सर कम निश्चितता दिखाता है।','A small change in temperature may affect the experiment.','तापमान में छोटा बदलाव प्रयोग को प्रभावित कर सकता है।'],
+['Must / Have to','strong obligation या evidence-based deduction; context महत्त्वपूर्ण है।','You must wear eye protection in the laboratory.','प्रयोगशाला में आँखों की सुरक्षा पहनना अनिवार्य है।'],
+['Should / Ought to','advice, expectation, moral duty.','Cities should expand safe cycling routes.','शहरों को सुरक्षित साइकिल मार्ग बढ़ाने चाहिए।'],
+['Must have + V3','अतीत के बारे में मजबूत deduction.','The ground is wet; it must have rained.','ज़मीन गीली है; ज़रूर बारिश हुई होगी।'],
+['Should have + V3','अतीत में अपेक्षित पर न किया गया काम/आलोचना।','We should have checked the source before sharing the claim.','दावा साझा करने से पहले स्रोत जाँचना चाहिए था।'],
+['Could have + V3','बीते समय की संभावना/अवसर जो संभव था।','The team could have finished earlier with better planning.','बेहतर योजना से टीम पहले पूरा कर सकती थी।'],
+['Needn’t have + V3','काम किया गया, लेकिन उसकी जरूरत नहीं थी।','You needn’t have printed every page; a digital copy was enough.','हर पन्ना छापने की जरूरत नहीं थी; डिजिटल कॉपी पर्याप्त थी।']],
+extra:'Advanced contrast: “mustn’t” = मना है; “needn’t” = जरूरी नहीं। “Didn’t need to” का अर्थ संदर्भ के अनुसार जरूरत नहीं थी (और शायद काम नहीं किया) हो सकता है; “needn’t have done” बताता है कि काम किया गया, पर अनावश्यक था। “May have” और “must have” की certainty अलग है।'},
+{key:'clauses',name:'Clauses',emoji:'🧩',intro:'Clause में subject और finite verb या clause-like structure होता है। Clause का काम पहचानना उसके नाम से अधिक महत्त्वपूर्ण है: वह noun, adjective या adverb की तरह काम कर सकता है।',
+rules:[
+['Noun Clause','sentence में noun की भूमिका: subject, object या complement.','What the telescope revealed surprised everyone.','दूरबीन ने जो दिखाया, उसने सबको चौंका दिया।'],
+['Adjective / Relative Clause','किसी noun/pronoun की जानकारी देता है; who, which, that, whose आदि।','The scientist who led the mission received an award.','जिस वैज्ञानिक ने मिशन का नेतृत्व किया, उसे पुरस्कार मिला।'],
+['Adverb Clause','time, reason, condition, concession, purpose आदि बताता है।','Although the road was flooded, the rescue team continued.','हालाँकि सड़क पर पानी था, बचाव दल आगे बढ़ा।'],
+['Conditional Clause','if/unless/provided that जैसे शब्दों से condition.','If communities save water, reservoirs may recover.','यदि समुदाय पानी बचाएँ, तो जलाशय फिर भर सकते हैं।'],
+['Reduced Relative Clause','कुछ relative clauses को participle phrase में छोटा किया जा सकता है।','The data that were collected yesterday → The data collected yesterday.','कल इकट्ठे किए गए आँकड़े।'],
+['Non-finite Clause','to-infinitive, -ing या participle structure; subject कभी implied होता है।','To reduce waste, the school installed refill stations.','कचरा घटाने के लिए स्कूल ने refill stations लगाए।'],
+['Relative Pronoun Omission','object relative pronoun कई defining clauses में हट सकता है।','The book (that) I borrowed explains climate systems.','वह किताब जो मैंने उधार ली थी, जलवायु तंत्र समझाती है।'],
+['Complex Sentence','एक independent clause और कम-से-कम एक dependent clause.','Because the river rose overnight, the village moved to higher ground.','रात में नदी बढ़ने के कारण गाँव ऊँची जगह चला गया।']],
+extra:'Advanced note: “that” noun clause में complementizer हो सकता है, जबकि relative clause में antecedent से संबंध बनाता है। Punctuation meaning बदल सकती है: defining relative clause पहचान बताती है; non-defining clause अतिरिक्त सूचना देती है और commas से अलग होती है.'},
+{key:'articles',name:'Articles',emoji:'🅰️',intro:'Articles noun के पहले आते हैं। A/An किसी अनिश्चित singular countable noun के लिए और The किसी निश्चित/पहले से पहचाने गए noun के लिए आता है।',rules:[
+['A — consonant sound','Consonant sound से शुरू होने वाले singular countable noun से पहले a आता है।','A university has opened nearby.','University की शुरुआत “यू” ध्वनि से होती है, इसलिए a।'],
+['An — vowel sound','Vowel sound से पहले an आता है; spelling नहीं, sound देखें।','An honest person tells the truth.','Honest में h silent है, इसलिए an।'],
+['The — specific noun','जब noun विशेष/पहचाना हुआ हो, the का प्रयोग करें।','Please close the door.','किस दरवाज़े की बात है, यह संदर्भ से स्पष्ट है।'],
+['Zero article','Plural/uncountable nouns के सामान्य अर्थ में अक्सर article नहीं आता।','Water is essential for life.','Water सामान्य अर्थ में है, इसलिए article नहीं।']],extra:'Exam tip: a European, an hour, a one-rupee coin; article का चुनाव ध्वनि और अर्थ से करें।'},
+{key:'determiners',name:'Determiners',emoji:'🔎',intro:'Determiners noun की मात्रा, संख्या, स्वामित्व या पहचान बताते हैं और सामान्यतः noun से पहले आते हैं।',rules:[
+['Some / Any','Some सामान्यतः affirmative में; any प्रश्न और negative में, पर संदर्भ के अनुसार अपवाद हैं।','We need some information. / Do you have any questions?','Information uncountable है; questions plural countable है।'],
+['Much / Many','Much uncountable nouns के साथ; many plural countable nouns के साथ।','There is not much water, but there are many bottles.','Water uncountable, bottles countable।'],
+['Few / A few','Few = लगभग नहीं; a few = कुछ।','A few students stayed after class.','A few सकारात्मक अर्थ देता है।'],
+['Each / Every','Each व्यक्ति/वस्तु पर अलग-अलग ध्यान देता है; every पूरे समूह के सभी सदस्यों पर।','Each student has a notebook.','Each के साथ singular verb।']],extra:'Less सामान्यतः uncountable और fewer countable nouns के साथ; this/that/these/those दूरी या पहचान दिखाते हैं।'},
+{key:'prepositions',name:'Prepositions',emoji:'📍',intro:'Prepositions noun/pronoun को समय, स्थान, दिशा या दूसरे शब्दों से संबंध में रखते हैं। इन्हें केवल अनुवाद से नहीं, phrase के प्रयोग से सीखें।',rules:[
+['At / On / In — time','At: exact time; on: day/date; in: month/year/long period.','The meeting starts at 9, on Monday, in July.','समय के स्तर के अनुसार preposition बदलता है।'],
+['At / On / In — place','At किसी point/place, on surface, in enclosed area/city/country के लिए।','She is at the gate; the book is on the desk; he lives in India.','स्थान का संबंध पहचानें।'],
+['Since / For','Since starting point; for duration.','They have lived here for six years.','Since 2020 और for six years सही प्रयोग हैं।'],
+['By / With','By agent/method; with instrument/tool.','The letter was written by Riya with a blue pen.','By बताता है किसने; with किस साधन से।']],extra:'Preposition अक्सर fixed collocations में आता है: interested in, depend on, good at, afraid of। पूरे phrase को याद करें।'},
+{key:'conjunctions',name:'Conjunctions',emoji:'🔗',intro:'Conjunctions शब्दों, phrases और clauses को जोड़ते हैं। सही conjunction चुनने के लिए दोनों हिस्सों का logical relation पहचानें।',rules:[
+['And / But','And जोड़ता है; but contrast दिखाता है।','The road was long, but the view was beautiful.','दो विचारों में विरोध है।'],
+['Because / So','Because कारण बताता है; so परिणाम।','It rained, so the match was postponed.','परिणाम के लिए so का प्रयोग।'],
+['Although / Though','Contrast या concession; इनके साथ सामान्यतः but को उसी clause में दोहराएँ नहीं।','Although it was cold, we went outside.','Although…yet संभव है, लेकिन although…but से बचें।'],
+['Either…or / Neither…nor','दो विकल्प या दो नकारात्मक विकल्प जोड़ते हैं।','Either you or your brother is responsible.','Verb सामान्यतः निकटतम subject के अनुसार होता है।']],extra:'Paired conjunctions में दोनों हिस्से parallel रखें: not only…but also, both…and, neither…nor।'},
+{key:'nonfinites',name:'Non-Finites',emoji:'🧩',intro:'Non-finite verb forms में infinitive, gerund और participle शामिल हैं। ये अकेले tense/person के अनुसार finite verb की तरह नहीं बदलते।',rules:[
+['Infinitive','to + V1 उद्देश्य, इरादा या कुछ verbs के बाद आता है।','She wants to learn French.','Want के बाद to-infinitive।'],
+['Gerund','V-ing जब noun की तरह काम करे।','Reading improves vocabulary.','Reading subject की तरह काम कर रहा है।'],
+['Present participle','V-ing adjective या participle phrase बन सकता है।','The crying baby needs attention.','Crying, baby का वर्णन करता है।'],
+['Past participle','V3 adjective/passive/perfect structures में आता है।','The broken window was repaired.','Broken, window की अवस्था बताता है।']],extra:'कुछ verbs के बाद gerund (enjoy doing), कुछ के बाद infinitive (decide to do) आता है; कुछ में अर्थ बदल जाता है (stop doing/stop to do)।'},
+{key:'agreement',name:'Subject–Verb Agreement',emoji:'⚖️',intro:'Finite verb का number और person subject के अनुसार होना चाहिए। Subject को पहचानें; बीच में आए phrases से भ्रमित न हों।',rules:[
+['Singular subject','Present Simple में he/she/it या singular noun के साथ सामान्यतः V1+s/es।','The list of items is on the desk.','Subject “list” singular है; “items” नहीं।'],
+['Each / Everyone','Each, everyone, everybody, someone जैसे शब्द सामान्यतः singular verb लेते हैं।','Everyone has a role.','Everyone के साथ has।'],
+['Either…or / Neither…nor','Verb सामान्यतः उसके निकट वाले subject के अनुसार होता है।','Neither the players nor the coach is ready.','निकट subject coach singular है।'],
+['Uncountable nouns','Information, advice, furniture जैसे nouns सामान्यतः singular होते हैं।','The information is useful.','Information uncountable noun है।']],extra:'A number of + plural noun के साथ plural verb; the number of + plural noun के साथ singular verb आता है।'},
+{key:'transform',name:'Sentence Transformation',emoji:'🔄',intro:'Transformation में मूल अर्थ बनाए रखते हुए sentence का structure बदला जाता है—simple, compound, complex, degree या affirmative/negative form में।',rules:[
+['Simple to complex','Phrase को subordinate clause में बदला जा सकता है।','Being ill, he stayed home. → As he was ill, he stayed home.','कारण का अर्थ बना रहता है।'],
+['Compound sentence','दो independent clauses को coordinating conjunction से जोड़ें।','He worked hard, and he passed the test.','दोनों clauses अपने-आप में पूर्ण हैं।'],
+['Complex sentence','एक main clause और कम-से-कम एक subordinate clause होता है।','I know that she is honest.','That-clause, know का object है।'],
+['Too…to / So…that','अर्थ सुरक्षित रखते हुए structure बदलें।','He is too tired to walk. → He is so tired that he cannot walk.','दोनों वाक्य असमर्थता का अर्थ देते हैं।']],extra:'Transformation में केवल structure बदलें; tense, subject और मूल meaning को अनावश्यक रूप से न बदलें।'},
+{key:'conditionals',name:'Conditionals',emoji:'🌦️',intro:'Conditional sentences शर्त और उसके परिणाम का संबंध बताते हैं। Type चुनते समय समय और वास्तविकता/संभावना का अर्थ समझें।',rules:[
+['Zero conditional','If + present simple, present simple: सामान्य सत्य/नियम।','If water reaches 100°C at standard pressure, it boils.','सामान्य वैज्ञानिक नियम।'],
+['First conditional','If + present simple, will + V1: वास्तविक भविष्य की संभावना।','If it rains, we will stay indoors.','If-clause में सामान्यतः will नहीं।'],
+['Second conditional','If + past simple, would + V1: काल्पनिक/कम संभावित वर्तमान या भविष्य।','If I had more time, I would learn Spanish.','काल्पनिक स्थिति।'],
+['Third conditional','If + past perfect, would have + V3: अतीत की अवास्तविक स्थिति।','If she had left earlier, she would have caught the train.','अतीत में हुआ नहीं, ऐसा परिणाम।']],extra:'Mixed conditionals भी होते हैं। If-clause में सामान्यतः would नहीं आता; “If I were you” औपचारिक/मानक सलाह का रूप है।'},
+{key:'questiontags',name:'Question Tags',emoji:'❓',intro:'Question tags कथन के अंत में छोटा प्रश्न जोड़ते हैं। सामान्य नियम: positive statement के बाद negative tag और negative statement के बाद positive tag।',rules:[
+['Positive statement','Positive statement + negative tag.','She is ready, isn’t she?','is के अनुरूप isn’t she।'],
+['Negative statement','Negative statement + positive tag.','They don’t live here, do they?','don’t के अनुरूप do they।'],
+['Auxiliary matching','Tag में वही auxiliary/modal रखें; न हो तो do/does/did लें।','He plays cricket, doesn’t he?','Present Simple में does।'],
+['Special forms','I am के साथ aren’t I?; imperative में will you? आम है।','I am late, aren’t I?','यह प्रचलित standard tag form है।']],extra:'Everyone, someone जैसे subjects के लिए tag में अक्सर they आता है: Everyone is ready, aren’t they? आवाज़ का उठना/गिरना भी meaning बदल सकता है।'},
+{key:'error',name:'Error Detection',emoji:'🛠️',intro:'Error detection में subject–verb agreement, tense, articles, prepositions, pronouns और sentence structure जाँचें। पहले पूरा sentence पढ़ें, फिर rule पहचानें।',rules:[
+['Agreement','गलत: She go to school. सही: She goes to school.','She goes to school every day.','Third-person singular Present Simple में goes।'],
+['Tense consistency','गलत: He has seen her yesterday. सही: He saw her yesterday.','He saw her yesterday.','Finished past time yesterday के साथ Past Simple।'],
+['Article','गलत: He is an university student. सही: He is a university student.','He is a university student.','University की शुरुआत “यू” consonant sound से होती है।'],
+['Preposition','गलत: We discussed about the plan. सही: We discussed the plan.','We discussed the plan.','Discuss के बाद सामान्यतः about नहीं लगता।']],extra:'Exam strategy: subject और main verb ढूँढें; tense marker, singular/plural, article/preposition और parallel structure जाँचें। अर्थ और context भी देखें।'},
+{key:'sentence',name:'The Sentence',emoji:'🧱',intro:'Sentence शब्दों का ऐसा समूह है जो पूर्ण विचार व्यक्त करता है। सामान्य अंग्रेज़ी declarative sentence में subject और predicate होते हैं, पर imperative में subject “you” अक्सर छिपा रहता है।',rules:[
+['Complete thought','वाक्य में पूरा अर्थ होना चाहिए; केवल phrase हमेशा sentence नहीं होता।','The children played in the garden.','बच्चे बगीचे में खेले।'],
+['Subject and predicate','Subject बताता है किसके बारे में बात है; predicate subject के बारे में कुछ कहता है।','The old bridge / collapsed during the storm.','Subject: The old bridge; Predicate: collapsed during the storm.'],
+['Statement','सामान्य कथन में प्रायः subject पहले और verb उसके बाद आता है।','The library closes at six.','पुस्तकालय छह बजे बंद होता है।'],
+['Question','प्रश्न में auxiliary अक्सर subject से पहले आता है।','Have the students finished the task?','क्या विद्यार्थियों ने काम पूरा कर लिया है?'],
+['Command / request','Imperative में base verb से शुरुआत होती है; subject “you” implied होता है।','Please keep the classroom clean.','कृपया कक्षा साफ रखें।']],extra:'Sentence की punctuation meaning को स्पष्ट करती है: statement के बाद full stop, direct question के बाद question mark और strong exclamation के बाद exclamation mark आता है।'},
+{key:'phrase',name:'Phrase & Clause',emoji:'🧩',intro:'Phrase शब्दों का समूह है जो sentence में एक इकाई की तरह काम करता है; clause में subject और verb का संबंध होता है। पहचानने का आसान तरीका है—क्या समूह में अपना subject–verb pair है?',rules:[
+['Noun phrase','Noun के आसपास determiner/adjective आदि मिलकर noun phrase बनाते हैं।','The tall girl in the blue coat won.','नीले कोट वाली लंबी लड़की जीती।'],
+['Prepositional phrase','Preposition + object; स्थान, समय, दिशा या संबंध बताता है।','The keys are under the newspaper.','चाबियाँ अख़बार के नीचे हैं।'],
+['Independent clause','अपने आप में पूरा वाक्य बन सकता है।','The rain stopped.','बारिश रुक गई।'],
+['Dependent clause','दूसरे clause पर निर्भर रहता है।','because the road was flooded','क्योंकि सड़क पर पानी भर गया था—अकेले पूर्ण वाक्य नहीं।'],
+['Relative clause','Noun को पहचानने/वर्णित करने के लिए who, which, that आदि से शुरू हो सकता है।','The book that you lent me is useful.','जो किताब तुमने दी थी, वह उपयोगी है।']],extra:'Phrase और clause को केवल लंबाई से नहीं पहचानें। “after the match” phrase है; “after the match ended” clause है क्योंकि ended का subject match है।'},
+{key:'parts',name:'Parts of Speech',emoji:'🔤',intro:'शब्द का part of speech उसके वाक्य में काम से पहचाना जाता है। एक ही शब्द अलग वाक्यों में noun, verb, adjective या adverb हो सकता है।',rules:[
+['Noun','व्यक्ति, स्थान, वस्तु, गुण या विचार का नाम।','Curiosity drives discovery.','Curiosity एक विचार/गुण का नाम है।'],
+['Pronoun','Noun की जगह या उसके संदर्भ में आता है।','Riya finished her work; she checked it again.','She, her, it pronoun forms हैं।'],
+['Verb','Action, event या state व्यक्त करता है।','The leaves turned yellow.','Turned यहाँ बदलाव/state का verb है।'],
+['Adjective / Adverb','Adjective noun को; adverb verb, adjective या दूसरे adverb को modify कर सकता है।','A careful driver reacted quickly.','Careful, driver का; quickly, reacted का वर्णन करता है।'],
+['Function words','Determiners, prepositions, conjunctions और interjections संबंध/भाव/संरचना दिखाते हैं।','The cat slept under the chair, but the dog stayed outside.','The, under, but जैसे शब्द grammar relations बताते हैं।']],extra:'Part of speech याद करने के साथ function पहचानें: “fast train” में fast adjective है, जबकि “run fast” में fast adverb है।'},
+{key:'noun',name:'Noun: Kinds, Number & Case',emoji:'🏷️',intro:'Noun नाम बताता है। Noun को proper/common, concrete/abstract, countable/uncountable और singular/plural जैसे आधारों पर समझा जा सकता है।',rules:[
+['Proper and common nouns','Proper noun किसी विशेष नाम को; common noun सामान्य वर्ग को बताता है।','The river Ganga flows through India.','Ganga और India proper nouns; river common noun है।'],
+['Concrete and abstract','Concrete noun इंद्रियों से अनुभव हो सकता है; abstract noun गुण/भाव/विचार बताता है।','Honesty earns trust.','Honesty abstract noun है; trust भी यहाँ abstract है।'],
+['Countable / uncountable','Countable के singular/plural और numbers हो सकते हैं; uncountable सामान्यतः सीधे a/an या plural नहीं लेते।','Three chairs; some furniture.','Three chairs सही; “three furnitures” सामान्यतः गलत।'],
+['Plural spelling','अधिकांश में -s/-es; कुछ irregular: child–children, mouse–mice.','The children carried boxes.','Child का plural children; box का boxes।'],
+['Possessive case','स्वामित्व के लिए singular noun + ’s; plural -s पर समाप्त हो तो अक्सर apostrophe मात्र।','The teacher’s desk; the teachers’ room.','दोनों में apostrophe की जगह अलग है।']],extra:'Advice, information, furniture, luggage सामान्यतः uncountable हैं। “A piece of advice / two items of information” जैसे measure expressions उपयोग करें।'},
+{key:'pronoun',name:'Pronouns',emoji:'👥',intro:'Pronoun noun phrase को दोहराने से बचाता है और person, number, case, gender/reference तथा sentence role के अनुसार बदल सकता है।',rules:[
+['Subject and object forms','Subject position में I/he/she/we/they; object position में me/him/her/us/them।','She invited him and me.','Invited का object him and me है।'],
+['Possessives','Possessive determiners noun से पहले; possessive pronouns अकेले आ सकते हैं।','This is my book; that one is yours.','My + noun; yours बिना noun के।'],
+['Reflexive pronouns','जब subject और object एक ही व्यक्ति/वस्तु हों या जोर देना हो।','He taught himself to code.','Himself उसी subject he को संदर्भित करता है।'],
+['Relative pronouns','Who व्यक्ति, which वस्तु/जानवर, whose possession; that कई defining clauses में।','The artist whose work won is here.','Whose ownership संबंध दिखाता है।'],
+['Indefinite pronouns','Everyone, somebody, each आदि सामान्यतः singular verb लेते हैं; reference के लिए singular they भी प्रचलित है।','Everyone has brought their notebook.','Everyone के साथ has; their gender-neutral reference है।']],extra:'Pronoun का antecedent स्पष्ट रखें। “When Ravi met Aman, he smiled” में he अस्पष्ट हो सकता है; नाम दोहराकर अर्थ साफ करें।'},
+{key:'adjective',name:'Adjectives & Comparison',emoji:'🎨',intro:'Adjective noun/pronoun की quality, quantity, identity या condition बताता है। Comparison में positive, comparative और superlative forms आते हैं।',rules:[
+['Attributive / predicative','Attributive adjective noun से पहले; predicative linking verb के बाद आता है।','A bright student is confident.','Bright noun से पहले; confident linking verb के बाद।'],
+['Comparative','छोटे adjectives में अक्सर -er; longer adjectives में more + adjective।','This route is shorter than the old one.','दो चीज़ों की तुलना में than।'],
+['Superlative','समूह में उच्चतम/न्यूनतम स्तर; अक्सर the + -est / most।','It is the most useful chapter in the book.','समूह में सबसे उपयोगी।'],
+['Irregular forms','good–better–best; bad–worse–worst; far के कई context-dependent forms।','This result is better than the last one.','Gooder नहीं, better।'],
+['Parallel comparison','जिन चीज़ों की तुलना हो रही है वे logical रूप से समान हों।','The climate of Delhi is hotter than that of Shimla in summer.','That of, climate को दोहराने से बचाता है।']],extra:'Double comparison से बचें: “more easier” नहीं, “easier”; “most best” नहीं, “best”. Absolute adjectives जैसे unique/perfect के साथ comparison context के अनुसार सावधानी से करें।'},
+{key:'verb',name:'Verbs, Forms & Mood',emoji:'⚙️',intro:'Verb action, event या state बताता है। Finite verb tense/person/number से जुड़ता है; auxiliaries tense, aspect, voice और questions बनाने में मदद करते हैं।',rules:[
+['Main and auxiliary verbs','Main verb मुख्य अर्थ देता है; be, have, do और modals auxiliary बन सकते हैं।','They have completed the task.','Have perfect construction में auxiliary है।'],
+['Transitive / intransitive','Transitive verb object ले सकता है; intransitive सामान्यतः direct object नहीं लेता।','The child opened the box. / The child slept.','Opened + object; slept का direct object नहीं।'],
+['Linking verbs','Be, seem, become, feel आदि subject को complement से जोड़ सकते हैं।','The sky became dark.','Dark subject complement है।'],
+['Mood','Indicative तथ्य/प्रश्न, imperative निर्देश, subjunctive कुछ formal demands/wishes/imagined situations दिखाता है।','The committee recommends that he be present.','Formal subjunctive में be का प्रयोग।'],
+['Verb patterns','कुछ verbs के बाद gerund, कुछ के बाद infinitive और कुछ के बाद दोनों आते हैं।','They enjoy reading; they decided to leave.','Enjoy + -ing; decide + to-infinitive।']],extra:'Verb form चुनने से पहले finite verb, auxiliary, subject agreement और required complement पहचानें। Irregular verbs को सूची और वाक्य दोनों से अभ्यास करें।'},
+{key:'adverb',name:'Adverbs',emoji:'💨',intro:'Adverb verb, adjective, दूसरे adverb या पूरे clause को modify कर सकता है। यह manner, time, place, frequency, degree या viewpoint बताता है।',rules:[
+['Manner','कैसे? अक्सर -ly, लेकिन fast, hard, well जैसे अपवाद भी हैं।','The team worked carefully.','Carefully बताता है कैसे काम किया।'],
+['Frequency','Always, usually, often, sometimes, rarely, never जैसी frequency।','She usually arrives early.','Main verb से पहले; be के बाद सामान्यतः।'],
+['Degree','Very, quite, almost, too, enough आदि intensity/degree बताते हैं।','The water is too cold to swim in.','Too + adjective + to-infinitive।'],
+['Position','Adverb की जगह अर्थ/ज़ोर बदल सकती है; sentence adverb अक्सर पूरे कथन पर comment करता है।','Fortunately, everyone reached safely.','Fortunately पूरे clause पर comment करता है।'],
+['Adjective vs adverb','Adjective noun/linking verb complement; adverb action या quality को modify करता है।','She sings well; she is a good singer.','Well adverb; good adjective।']],extra:'Hard और hardly का अर्थ अलग है: work hard = मेहनत करना; hardly work = लगभग काम न करना। Late और lately भी अलग अर्थ दे सकते हैं।'},
+{key:'interjection',name:'Interjections & Punctuation',emoji:'❗',intro:'Interjection अचानक भावना/प्रतिक्रिया दिखाता है। Punctuation लिखित वाक्य में रुकाव, संरचना और अर्थ स्पष्ट करती है।',rules:[
+['Interjection','Oh, wow, alas, hurrah जैसे शब्द भाव व्यक्त करते हैं।','Wow! That is an amazing photograph.','Wow आश्चर्य/प्रशंसा दिखाता है।'],
+['Full stop and question mark','Statement के बाद full stop; direct question के बाद question mark।','Where is the science lab?','सीधा प्रश्न है।'],
+['Comma','सूची, introductory phrase, nonessential information या clauses की clarity के लिए।','After the bell rang, the students left.','Introductory clause के बाद comma।'],
+['Apostrophe','Contraction या possession: it’s = it is; its = possessive determiner।','The bird spread its wings; it’s ready to fly.','Its और it’s में अंतर।'],
+['Quotation marks','Direct speech या उद्धरण के आसपास, शैली के अनुसार।','The teacher said, “Read the question carefully.”','Direct speech को उद्धरण चिह्नों में रखा गया है।']],extra:'Punctuation को केवल सजावट न मानें—यह meaning बदल सकती है। Direct speech के punctuation में British/US styles कुछ अलग हो सकते हैं; एक style लगातार अपनाएँ।'},
+{key:'analysis',name:'Sentence Analysis',emoji:'🔬',intro:'Sentence analysis में subject, predicate, object, complement, modifier और clause functions की पहचान की जाती है। यह grammar rules को sentence में लागू करने का अभ्यास है।',rules:[
+['Subject','कौन/क्या? finite verb से जुड़ा मुख्य subject खोजें।','The young scientist solved the puzzle.','Subject: The young scientist.'],
+['Object','Verb का action किस पर/किसे हुआ? Direct और indirect objects अलग हो सकते हैं।','The guide gave the visitors a map.','Indirect object: the visitors; direct object: a map.'],
+['Complement','Subject/object को पहचान या वर्णन पूरा करता है।','The experiment seems successful.','Successful subject complement है।'],
+['Modifier','Adjective, adverb, phrase या clause अतिरिक्त जानकारी देता है।','The girl with the red bag smiled.','With the red bag, girl को modify करता है।'],
+['Clause function','Clause sentence में noun, adjective या adverb की भूमिका निभा सकता है।','I know what you mean.','What you mean, know का object clause है।']],extra:'Analysis करते समय पहले main verb खोजें, फिर subject, objects/complements और modifiers को अलग करें। हर phrase को clause न मानें।'},
+{key:'wordorder',name:'Word Order & Questions',emoji:'🔀',intro:'English में सामान्य declarative word order Subject–Verb–Object (SVO) है। Questions, adverbs, indirect questions और emphasis में क्रम बदल सकता है।',rules:[
+['Basic SVO','Subject + verb + object सामान्य क्रम है।','The students solved the problem.','S + V + O।'],
+['Auxiliary inversion','Yes/no question में auxiliary subject से पहले आता है।','Did the students solve the problem?','Did + subject + V1।'],
+['Wh-questions','Wh-word सामान्यतः शुरुआत में; फिर auxiliary + subject + main verb।','Why did the machine stop?','Why + did + subject + V1।'],
+['Indirect questions','Indirect question में statement order रखें, direct question inversion नहीं।','Could you tell me where the station is?','“where is the station” नहीं, “where the station is”।'],
+['Adverb placement','Frequency adverbs main verb से पहले, be के बाद अक्सर आते हैं।','She often visits the museum; she is often busy.','Adverb की position verb type पर निर्भर है।']],extra:'Word order से grammatical role स्पष्ट होता है। “The dog chased the cat” और “The cat chased the dog” में शब्द वही हैं, लेकिन अर्थ अलग है।'},
+{key:'idioms',name:'Idioms & Common Usage',emoji:'💬',intro:'Idioms का अर्थ अक्सर शब्दों के शाब्दिक अर्थ से अलग होता है। Fixed expressions और collocations को पूरे phrase के रूप में सीखें।',rules:[
+['Idiom','Break the ice = बातचीत शुरू करके झिझक कम करना।','A short game helped break the ice.','खेल ने सबकी झिझक कम की।'],
+['Collocation','कुछ शब्द स्वाभाविक रूप से साथ आते हैं।','Make a decision; do homework.','“Do a decision” सामान्य collocation नहीं।'],
+['Fixed preposition','Interested in, responsible for, depend on जैसे combinations याद करें।','The result depends on the weather.','Depend के साथ on।'],
+['Common confusion','Borrow = उधार लेना; lend = उधार देना।','May I borrow your pen? I will lend you mine.','Borrow और lend का दृष्टिकोण उल्टा है।'],
+['Register','Formal, neutral और informal language परिस्थिति के अनुसार चुनें।','Could you please assist me?','Formal/polite request।']],extra:'Idioms का literal translation न करें। Context पढ़ें और phrase को वास्तविक उदाहरणों में दोहराएँ; क्षेत्रीय usage में कुछ variants संभव हैं।'},
+{key:'spelling',name:'Spelling & Word Formation',emoji:'🔠',intro:'Word formation में prefixes, suffixes, inflections और spelling changes शामिल हैं। Spelling केवल ध्वनि से हमेशा अनुमानित नहीं की जा सकती।',rules:[
+['Prefixes','Prefix शब्द के आगे जुड़कर अर्थ बदलता है: un-, re-, mis-, pre-।','Rewrite the paragraph carefully.','Re- दोबारा करने का अर्थ देता है।'],
+['Suffixes','Suffix शब्द के अंत में जुड़कर part of speech/meaning बदल सकता है।','kind → kindness; develop → development.','-ness noun बनाता है; -ment भी noun बना सकता है।'],
+['Y to i','कुछ words में consonant + y के बाद -es/-ed पर y बदलकर i होता है।','study → studies / studied.','Study में y से पहले consonant है।'],
+['Drop final e','कुछ words में -ing जोड़ते समय अंतिम silent e हटता है।','write → writing; make → making.','Final e हटता है।'],
+['Double consonant','कुछ short stressed forms में suffix से पहले अंतिम consonant double होता है।','stop → stopped / stopping.','Stress और spelling pattern दोनों देखें।']],extra:'हर suffix पर एक ही नियम लागू नहीं होता। Dictionary/spell-check का उपयोग करें, फिर word family और pronunciation के साथ अभ्यास करें।'},
+{key:'reported',name:'Reporting Verbs & Structures',emoji:'🗨️',intro:'Say, tell, ask, suggest, advise, promise और explain अलग grammatical patterns लेते हैं। सही reporting verb चुनने से meaning और sentence structure दोनों स्पष्ट होते हैं।',rules:[
+['Say vs tell','Say के बाद listener जरूरी नहीं; tell के साथ सामान्यतः person/object आता है।','She told us the news. / She said that she was ready.','Tell us; said that…'],
+['Ask','Question या request बताने के लिए; indirect question में statement order।','He asked whether the shop was open.','Whether + subject + verb।'],
+['Suggest','Suggest + gerund या that-clause; suggest someone to do सामान्यतः standard pattern नहीं।','She suggested taking a break.','Suggested + -ing।'],
+['Advise / warn','Advise/warn + object + to-infinitive या that-clause।','The doctor advised him to rest.','Object + to-infinitive।'],
+['Promise / refuse','Promise to do; refuse to do; admit doing जैसे patterns अर्थ से जुड़े हैं।','They promised to return.','Promise + to-infinitive।']],extra:'Reporting verb के बाद structure याद करें: explain something to someone; suggest doing; recommend that…; accuse someone of doing. Collocations में variation हो सकती है।'},
+{key:'irregularverbs',name:'Irregular Verbs',emoji:'🔤',intro:'Irregular verbs do not form the past and past participle simply by adding -ed. Learn V1, V2 and V3 together, and use the correct form for the tense or structure.',rules:[
+['Three principal forms','V1 = base form, V2 = past simple, V3 = past participle.','go — went — gone','जाना — गया — जा चुका'],
+['Same V1, V2 and V3','कुछ verbs की तीनों forms समान होती हैं: cut, put, hit, let.','She put the keys on the table.','उसने चाबियाँ मेज़ पर रखीं।'],
+['V2 and V3 are different','Past simple में V2; perfect tenses और passive में V3 चाहिए।','He wrote a letter. / He has written a letter.','उसने पत्र लिखा। / वह पत्र लिख चुका है।'],
+['Common irregular forms','be—was/were—been; do—did—done; see—saw—seen; take—took—taken.','They have taken the right decision.','उन्होंने सही निर्णय लिया है।'],
+['Lie and lay','लेटना: lie—lay—lain; रखना: lay—laid—laid.','The dog lay near the door.','कुत्ता दरवाज़े के पास लेटा था।'],
+['Learn in families','एक साथ मिलती-जुलती forms याद करें: sing–sang–sung; ring–rang–rung.','The choir sang beautifully.','गायक-मंडली ने सुंदर गाया।'],
+['Avoid overgeneralising -ed','Irregular verbs में goed/writed जैसे forms गलत हैं।','She went home early.','वह जल्दी घर गई।']
+],extra:'Exam tip: perfect tense में has/have/had के बाद V3 आता है; did के बाद V1 आता है: “Did he go?” न कि “Did he went?”'},
+{key:'sequence',name:'Sequence of Tenses',emoji:'🕰️',intro:'Sequence of Tenses बताता है कि एक वाक्य में main verb और subordinate clause के tense आपस में कैसे मेल खाते हैं। Meaning और time relationship सबसे महत्वपूर्ण हैं।',rules:[
+['Present main verb','Main clause present में हो तो subordinate clause का tense अर्थ के अनुसार present, past या future हो सकता है।','I know that she works hard.','मैं जानता हूँ कि वह मेहनत करती है।'],
+['Past reporting verb','Past reporting verb के बाद सामान्यतः present tense backshift होकर past हो जाता है।','He said that he was tired.','उसने कहा कि वह थका हुआ था।'],
+['Universal truth','वैज्ञानिक तथ्य या सार्वभौमिक सत्य में tense बदलना आवश्यक नहीं।','The teacher said that the Earth revolves around the Sun.','शिक्षक ने कहा कि पृथ्वी सूर्य की परिक्रमा करती है।'],
+['Earlier past action','एक past action दूसरे past action से पहले पूरा हुआ हो तो Past Perfect उपयोगी है।','She had left before I arrived.','मेरे पहुँचने से पहले वह जा चुकी थी।'],
+['Future time clause','When, before, after, as soon as, until के future meaning वाले clauses में सामान्यतः present tense आता है।','When the bell rings, we will leave.','जब घंटी बजेगी, हम निकलेंगे।'],
+['Same-time actions in the past','दो past actions साथ-साथ जारी हों तो Past Continuous उपयुक्त हो सकता है।','While I was reading, my brother was cooking.','जब मैं पढ़ रहा था, मेरा भाई खाना बना रहा था।'],
+['Meaning over mechanical change','हर reported clause में tense बदलना अनिवार्य नहीं; तथ्य अभी भी सत्य हो तो present रखा जा सकता है।','The guide explained that water boils at 100°C at standard pressure.','गाइड ने समझाया कि मानक दबाव पर पानी 100°C पर उबलता है।']
+],extra:'पहले घटनाओं का समय-संबंध तय करें—पहले, उसी समय, बाद में या सार्वभौमिक सत्य—फिर tense चुनें। केवल rule देखकर tense न बदलें।'},
+{key:'synthesis',name:'Sentence Synthesis',emoji:'🧩',intro:'Synthesis में दो या अधिक छोटे वाक्यों को अर्थ सुरक्षित रखते हुए एक स्पष्ट वाक्य में जोड़ा जाता है। Conjunctions, participles, phrases और clauses का सही उपयोग करें।',rules:[
+['Using a conjunction','कारण, विरोध, समय या परिणाम के संबंध के लिए सही conjunction चुनें।','He was ill. He attended class. → Although he was ill, he attended class.','वह बीमार था, फिर भी कक्षा में आया।'],
+['Using an infinitive','उद्देश्य बताने के लिए to + V1 का उपयोग हो सकता है।','She went to the library. She wanted to study. → She went to the library to study.','वह पढ़ने के लिए पुस्तकालय गई।'],
+['Using a participle','एक ही subject के दो कामों को participle phrase से जोड़ा जा सकता है।','He opened the door. He entered the room. → Opening the door, he entered the room.','दरवाज़ा खोलकर वह कमरे में आया।'],
+['Using a relative clause','Noun के बारे में अतिरिक्त पहचान/जानकारी देने के लिए who, which, that का उपयोग करें।','I met a girl. She won the prize. → I met a girl who won the prize.','मैं उस लड़की से मिला जिसने पुरस्कार जीता।'],
+['Using too…to','too + adjective + to-infinitive असमर्थता/अत्यधिक स्थिति व्यक्त कर सकता है।','The box is so heavy that I cannot lift it. → The box is too heavy for me to lift.','डिब्बा इतना भारी है कि मैं उसे उठा नहीं सकता।'],
+['Using enough to','Adjective + enough + to-infinitive पर्याप्त क्षमता/योग्यता बताता है।','He is so strong that he can carry it. → He is strong enough to carry it.','वह इसे उठाने जितना मज़बूत है।'],
+['Preserve meaning','वाक्य जोड़ते समय subject, tense, negation और मूल अर्थ न बदलें।','He worked hard. He failed. → Although he worked hard, he failed.','उसने मेहनत की, फिर भी वह असफल हुआ।']
+],extra:'एक से अधिक तरीके सही हो सकते हैं, लेकिन उत्तर में मूल अर्थ, tense और logical relationship सुरक्षित रहना चाहिए।'},
+{key:'punctuation',name:'Punctuation',emoji:'✒️',intro:'Punctuation marks पाठक को रुकने, अर्थ समझने, प्रश्न पहचानने और quoted speech अलग करने में मदद करते हैं। Capital letters और punctuation साथ-साथ जाँचें।',rules:[
+['Full stop (.)','सामान्य declarative sentence के अंत में full stop लगाएँ।','The library closes at five.','पुस्तकालय पाँच बजे बंद होता है।'],
+['Question mark (?)','Direct question के अंत में question mark लगाएँ।','Where are you going?','तुम कहाँ जा रहे हो?'],
+['Comma (,)', 'सूची में items अलग करने और introductory phrases/clauses के बाद comma का उपयोग करें।','We bought pens, pencils, and paper.','हमने पेन, पेंसिल और कागज़ खरीदे।'],
+['Apostrophe (\' )','Possession और contractions में apostrophe सही जगह लगाएँ; plural बनाने के लिए सामान्यतः apostrophe नहीं।','The teacher’s book is here.','शिक्षक की किताब यहाँ है।'],
+['Quotation marks','Direct speech के वास्तविक शब्द quotation marks में लिखे जाते हैं।','Rita said, “I am ready.”','रीता ने कहा, “मैं तैयार हूँ।”'],
+['Colon and semicolon','Colon सूची/स्पष्टीकरण शुरू कर सकता है; semicolon निकट संबंध वाले independent clauses जोड़ सकता है।','Bring three things: a pen, a ruler, and a notebook.','तीन चीज़ें लाएँ: पेन, स्केल और कॉपी।'],
+['Capital letters','वाक्य का पहला शब्द, proper nouns, days, months और “I” capital लिखें।','On Monday, Asha visited Delhi.','सोमवार को आशा दिल्ली गई।'],
+['Avoid comma splice','दो complete sentences को केवल comma से न जोड़ें; full stop, semicolon या conjunction लगाएँ।','It was raining, so we stayed inside.','बारिश हो रही थी, इसलिए हम अंदर रहे।']
+],extra:'Editing करते समय sentence boundaries, direct speech, names/dates, apostrophes और comma splices को अलग-अलग जाँचें।'},
+{key:'verbpatterns',name:'Verb Patterns',emoji:'🔗',intro:'कुछ verbs के बाद to-infinitive, कुछ के बाद -ing form, कुछ के बाद object + to-infinitive और कुछ के बाद bare infinitive आता है। Pattern बदलने से अर्थ भी बदल सकता है।',rules:[
+['Verb + to-infinitive','agree, decide, hope, plan, promise, refuse के बाद सामान्यतः to + V1 आता है।','They decided to postpone the meeting.','उन्होंने बैठक स्थगित करने का निर्णय लिया।'],
+['Verb + gerund (-ing)','enjoy, avoid, finish, mind, suggest के बाद सामान्यतः -ing form आता है।','She enjoys reading history.','उसे इतिहास पढ़ना पसंद है।'],
+['Verb + object + to-infinitive','advise, ask, encourage, invite, tell, want के बाद object + to + V1 आ सकता है।','The teacher encouraged us to participate.','शिक्षक ने हमें भाग लेने के लिए प्रोत्साहित किया।'],
+['Make / let + object + bare infinitive','Active construction में make/let के बाद object + V1 आता है।','The coach made them run again.','कोच ने उनसे फिर दौड़ लगवाई।'],
+['Help + object','Help के बाद bare infinitive या to-infinitive दोनों मिलते हैं।','She helped me (to) carry the box.','उसने डिब्बा उठाने में मेरी मदद की।'],
+['Meaning changes','stop, remember, forget, try जैसे verbs के बाद -ing और to-infinitive का अर्थ अलग हो सकता है।','He stopped smoking. / He stopped to smoke.','उसने धूम्रपान छोड़ दिया। / वह धूम्रपान करने के लिए रुका।'],
+['Preposition + gerund','Preposition के बाद verb आए तो सामान्यतः -ing form उपयोग करें।','They are interested in learning French.','वे फ़्रेंच सीखने में रुचि रखते हैं।'],
+['Avoid incorrect patterns','Suggest doing / suggest that… सही है; “suggest someone to do” सामान्य standard pattern नहीं।','She suggested taking a short break.','उसने थोड़ा विराम लेने का सुझाव दिया।']
+],extra:'Verb के साथ उसका pattern भी याद करें: decide to do, enjoy doing, tell someone to do, make someone do. परीक्षा में केवल verb meaning नहीं, उसके बाद आने वाली form भी जाँचें।'}
+];
+
+const facts=[
+['Earth completes one orbit around the Sun in about 365.25 days.','पृथ्वी सूर्य की एक परिक्रमा लगभग 365.25 दिनों में पूरी करती है।'],
+['The Pacific Ocean is the largest ocean on Earth.','प्रशांत महासागर पृथ्वी का सबसे बड़ा महासागर है।'],
+['The human heart has four chambers.','मानव हृदय में चार कक्ष होते हैं।'],
+['Light travels faster than sound in air.','हवा में प्रकाश ध्वनि से तेज चलता है।'],
+['The Himalayas contain many of the world’s highest peaks.','हिमालय में दुनिया की कई सबसे ऊँची चोटियाँ हैं।'],
+['Plants use photosynthesis to convert light energy into chemical energy.','पौधे प्रकाश संश्लेषण से प्रकाश ऊर्जा को रासायनिक ऊर्जा में बदलते हैं।'],
+['The Moon’s gravity helps produce ocean tides.','चंद्रमा का गुरुत्वाकर्षण समुद्री ज्वार-भाटा पैदा करने में मदद करता है।'],
+['Antarctica is the coldest continent on average.','औसतन अंटार्कटिका सबसे ठंडा महाद्वीप है।'],
+['The Indian Space Research Organisation is commonly abbreviated as ISRO.','भारतीय अंतरिक्ष अनुसंधान संगठन को सामान्यतः ISRO कहा जाता है।'],
+['The ozone layer absorbs much of the Sun’s harmful ultraviolet radiation.','ओज़ोन परत सूर्य की हानिकारक पराबैंगनी किरणों का बड़ा हिस्सा अवशोषित करती है।'],
+['A leap year usually has 366 days.','लीप वर्ष में सामान्यतः 366 दिन होते हैं।'],
+['The Amazon River system carries a very large volume of water.','अमेज़न नदी तंत्र बहुत बड़ी मात्रा में पानी बहाता है।'],
+['Sound needs a medium to travel, while light can travel through a vacuum.','ध्वनि को चलने के लिए माध्यम चाहिए, जबकि प्रकाश निर्वात में भी चल सकता है।'],
+['The chemical symbol for gold is Au.','सोने का रासायनिक प्रतीक Au है।'],
+['The United Nations was founded in 1945.','संयुक्त राष्ट्र की स्थापना 1945 में हुई थी।'],
+['The Indian Constitution came into effect on 26 January 1950.','भारतीय संविधान 26 जनवरी 1950 को लागू हुआ।'],
+['Saturn is famous for its prominent ring system.','शनि अपने प्रमुख वलय तंत्र के लिए प्रसिद्ध है।'],
+['Water expands when it freezes under ordinary conditions.','सामान्य परिस्थितियों में जमने पर पानी फैलता है।'],
+['The equator divides Earth into the Northern and Southern Hemispheres.','भूमध्य रेखा पृथ्वी को उत्तरी और दक्षिणी गोलार्ध में बाँटती है।'],
+['Bacteria are single-celled organisms.','बैक्टीरिया एक-कोशिकीय जीव होते हैं।']
+];
+
+const verbs=[
+['write','wrote','written','writing','लिखना'],['build','built','built','building','बनाना'],['choose','chose','chosen','choosing','चुनना'],['teach','taught','taught','teaching','पढ़ाना'],['seek','sought','sought','seeking','खोजना'],['rise','rose','risen','rising','उठना'],['grow','grew','grown','growing','बढ़ना'],['discover','discovered','discovered','discovering','खोज करना'],['measure','measured','measured','measuring','मापना'],['freeze','froze','frozen','freezing','जमना'],['broadcast','broadcast','broadcast','broadcasting','प्रसारित करना'],['overcome','overcame','overcome','overcoming','काबू पाना'],['withdraw','withdrew','withdrawn','withdrawing','वापस लेना'],['undertake','undertook','undertaken','undertaking','जिम्मेदारी लेना'],['sustain','sustained','sustained','sustaining','बनाए रखना'],['forecast','forecast','forecast','forecasting','पूर्वानुमान करना'],['spread','spread','spread','spreading','फैलाना'],['bind','bound','bound','binding','बाँधना'],['arise','arose','arisen','arising','उत्पन्न होना'],['prove','proved','proven/proved','proving','सिद्ध करना'],['bear','bore','borne/born','bearing','सहन करना/जन्म देना'],['lay','laid','laid','laying','रखना'],['lie','lay','lain','lying','लेटना'],['lead','led','led','leading','नेतृत्व करना'],['keep','kept','kept','keeping','रखना'],['send','sent','sent','sending','भेजना'],['take','took','taken','taking','लेना'],['speak','spoke','spoken','speaking','बोलना'],['draw','drew','drawn','drawing','खींचना/बनाना'],['hold','held','held','holding','पकड़ना/आयोजित करना']
+,
+['be','was/were','been','being','होना'],
+['beat','beat','beaten','beating','पीटना'],
+['become','became','become','becoming','बनना'],
+['begin','began','begun','beginning','शुरू करना'],
+['bite','bit','bitten','biting','काटना'],
+['blow','blew','blown','blowing','फूँक मारना'],
+['break','broke','broken','breaking','तोड़ना'],
+['bring','brought','brought','bringing','लाना'],
+['buy','bought','bought','buying','खरीदना'],
+['catch','caught','caught','catching','पकड़ना'],
+['come','came','come','coming','आना'],
+['cost','cost','cost','costing','कीमत होना'],
+['cut','cut','cut','cutting','काटना'],
+['deal','dealt','dealt','dealing','व्यवहार करना'],
+['dig','dug','dug','digging','खोदना'],
+['do','did','done','doing','करना'],
+['drink','drank','drunk','drinking','पीना'],
+['drive','drove','driven','driving','चलाना'],
+['eat','ate','eaten','eating','खाना'],
+['fall','fell','fallen','falling','गिरना'],
+['feed','fed','fed','feeding','खिलाना'],
+['feel','felt','felt','feeling','महसूस करना'],
+['fight','fought','fought','fighting','लड़ना'],
+['find','found','found','finding','खोजना'],
+['fly','flew','flown','flying','उड़ना'],
+['forget','forgot','forgotten','forgetting','भूलना'],
+['forgive','forgave','forgiven','forgiving','माफ़ करना'],
+['get','got','got/gotten','getting','पाना'],
+['give','gave','given','giving','देना'],
+['go','went','gone','going','जाना'],
+['hang','hung','hung','hanging','लटकाना'],
+['have','had','had','having','रखना/होना'],
+['hear','heard','heard','hearing','सुनना'],
+['hide','hid','hidden','hiding','छिपाना'],
+['hit','hit','hit','hitting','मारना'],
+['hurt','hurt','hurt','hurting','चोट पहुँचाना'],
+['know','knew','known','knowing','जानना'],
+['learn','learned/learnt','learned/learnt','learning','सीखना'],
+['leave','left','left','leaving','छोड़ना'],
+['lend','lent','lent','lending','उधार देना'],
+['let','let','let','letting','अनुमति देना'],
+['lose','lost','lost','losing','खोना'],
+['make','made','made','making','बनाना'],
+['mean','meant','meant','meaning','अर्थ होना'],
+['meet','met','met','meeting','मिलना'],
+['pay','paid','paid','paying','भुगतान करना'],
+['put','put','put','putting','रखना'],
+['read','read','read','reading','पढ़ना'],
+['ride','rode','ridden','riding','सवारी करना'],
+['ring','rang','rung','ringing','घंटी बजना'],
+['run','ran','run','running','दौड़ना'],
+['say','said','said','saying','कहना'],
+['see','saw','seen','seeing','देखना'],
+['sell','sold','sold','selling','बेचना'],
+['shine','shone','shone','shining','चमकना'],
+['shoot','shot','shot','shooting','शूट करना'],
+['show','showed','shown/showed','showing','दिखाना'],
+['shut','shut','shut','shutting','बंद करना'],
+['sing','sang','sung','singing','गाना'],
+['sink','sank','sunk','sinking','डूबना'],
+['sit','sat','sat','sitting','बैठना'],
+['sleep','slept','slept','sleeping','सोना'],
+['spend','spent','spent','spending','खर्च करना'],
+['stand','stood','stood','standing','खड़ा होना'],
+['steal','stole','stolen','stealing','चुराना'],
+['stick','stuck','stuck','sticking','चिपकना'],
+['strike','struck','struck/stricken','striking','प्रहार करना'],
+['sweep','swept','swept','sweeping','झाड़ू लगाना'],
+['swim','swam','swum','swimming','तैरना'],
+['tear','tore','torn','tearing','फाड़ना'],
+['tell','told','told','telling','बताना'],
+['think','thought','thought','thinking','सोचना'],
+['throw','threw','thrown','throwing','फेंकना'],
+['understand','understood','understood','understanding','समझना'],
+['wake','woke','woken','waking','जागना'],
+['wear','wore','worn','wearing','पहनना'],
+['win','won','won','winning','जीतना'],
+['weep','wept','wept','weeping','रोना'],
+['accept','accepted','accepted','accepting','स्वीकार करना'],
+['achieve','achieved','achieved','achieving','प्राप्त करना'],
+['announce','announced','announced','announcing','घोषणा करना'],
+['arrange','arranged','arranged','arranging','व्यवस्था करना'],
+['borrow','borrowed','borrowed','borrowing','उधार लेना'],
+['calculate','calculated','calculated','calculating','गणना करना'],
+['compare','compared','compared','comparing','तुलना करना'],
+['consider','considered','considered','considering','विचार करना'],
+['create','created','created','creating','रचना करना'],
+['decide','decided','decided','deciding','निर्णय लेना'],
+['describe','described','described','describing','वर्णन करना'],
+['develop','developed','developed','developing','विकसित करना'],
+['encourage','encouraged','encouraged','encouraging','प्रोत्साहित करना'],
+['explain','explained','explained','explaining','समझाना'],
+['improve','improved','improved','improving','सुधारना'],
+['increase','increased','increased','increasing','बढ़ाना'],
+['manage','managed','managed','managing','प्रबंधन करना'],
+['notice','noticed','noticed','noticing','ध्यान देना'],
+['organise','organised','organised','organising','व्यवस्थित करना'],
+['recognise','recognised','recognised','recognising','पहचानना'],
+['reduce','reduced','reduced','reducing','कम करना'],
+['require','required','required','requiring','आवश्यक होना'],
+['respond','responded','responded','responding','जवाब देना'],
+['solve','solved','solved','solving','हल करना'],
+['suggest','suggested','suggested','suggesting','सुझाव देना'],
+['translate','translated','translated','translating','अनुवाद करना'],
+['visit','visited','visited','visiting','मिलने जाना']
+];
+const subjects=['scientists','students','engineers','researchers','historians','farmers','doctors','the rescue team','astronomers','local communities','the museum','the school'];
+const objects=['the evidence','the climate data','a new method','the water samples','the ancient records','the safety rules','the results','the solar panels','the river levels','the research report','the old bridge','the experiment'];
+let current='tense',view='lessonview',page=0,searchText='',filterType='all';
+const topicbar=document.getElementById('topicbar');
+topics.forEach(t=>{let b=document.createElement('button');b.className='topicbtn'+(t.key===current?' active':'');b.innerHTML=t.emoji+' '+t.name;b.onclick=()=>selectTopic(t.key);topicbar.appendChild(b)});
+function getTopic(){return topics.find(t=>t.key===current)}
+function selectTopic(key){current=key;page=0;document.querySelectorAll('.topicbtn').forEach((b,i)=>b.classList.toggle('active',topics[i].key===key));renderLesson();renderContent()}
+function renderLesson(){let t=getTopic();document.getElementById('lesson').innerHTML=`<h2>${t.emoji} ${t.name}: Full Teaching Module</h2><p>${t.intro}</p><div class="small">Teaching path: Foundation → Pattern → Meaning → Exceptions → Transformation → Practice.</div>`;document.getElementById('exCount').textContent='Examples + explanations';document.getElementById('quizCount').textContent='Exercises + answers'}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{view=b.dataset.view;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));page=0;renderContent()});
+function examplesFor(t){
+ const sets={
+ tense:[
+  ["The Earth revolves around the Sun.","पृथ्वी सूर्य की परिक्रमा करती है।","Present Simple: सामान्य वैज्ञानिक तथ्य।"],
+  ["Scientists are studying distant galaxies.","वैज्ञानिक दूरस्थ आकाशगंगाओं का अध्ययन कर रहे हैं।","Present Continuous: इस समय जारी काम।"],
+  ["Researchers have discovered a new species.","शोधकर्ताओं ने एक नई प्रजाति खोजी है।","Present Perfect: बीते काम का वर्तमान से संबंध।"],
+  ["The team has been collecting data for six months.","टीम छह महीनों से आँकड़े एकत्र कर रही है।","Present Perfect Continuous: काम पहले शुरू हुआ और अब तक जारी है।"],
+  ["India launched Chandrayaan-3 in 2023.","भारत ने 2023 में चंद्रयान-3 का प्रक्षेपण किया।","Past Simple: बीते समय में पूरा हुआ काम।"],
+  ["The students were observing the lunar eclipse.","विद्यार्थी चंद्र ग्रहण का अवलोकन कर रहे थे।","Past Continuous: अतीत में किसी समय जारी काम।"],
+  ["The train had left before we reached the station.","हमारे स्टेशन पहुँचने से पहले ही ट्रेन जा चुकी थी।","Past Perfect: अतीत की दूसरी घटना से पहले पूरा हुआ काम।"],
+  ["They had been waiting for an hour when the bus arrived.","जब बस पहुँची, तब वे एक घंटे से इंतज़ार कर रहे थे।","Past Perfect Continuous: अतीत के एक बिंदु तक जारी अवधि।"],
+  ["The museum will open a new gallery tomorrow.","संग्रहालय कल एक नई दीर्घा खोलेगा।","Future Simple: भविष्य में होने वाला काम।"],
+  ["At noon, the researchers will be testing the instrument.","दोपहर के समय शोधकर्ता उपकरण की जाँच कर रहे होंगे।","Future Continuous: भविष्य के किसी समय पर जारी काम।"],
+  ["By Friday, the class will have completed the project.","शुक्रवार तक कक्षा परियोजना पूरी कर चुकी होगी।","Future Perfect: भविष्य के निश्चित समय तक पूरा हो चुका काम।"],
+  ["By June, she will have been teaching for ten years.","जून तक उसे पढ़ाते हुए दस वर्ष हो चुके होंगे।","Future Perfect Continuous: भविष्य के एक बिंदु तक जारी अवधि।"],
+  ["When the bell rings, we will leave the classroom.","घंटी बजते ही हम कक्षा से निकल जाएँगे।","भविष्य का अर्थ होने पर भी when-clause में Present Simple आता है।"],
+  ["The Pacific Ocean covers a vast area of Earth.","प्रशांत महासागर पृथ्वी के बहुत बड़े क्षेत्र में फैला हुआ है।","Present Simple: सामान्य तथ्य।"],
+  ["The scientists were checking the data when the power failed.","जब बिजली चली गई, तब वैज्ञानिक आँकड़ों की जाँच कर रहे थे।","Past Continuous + Past Simple: जारी काम के बीच दूसरी घटना।"],
+  ["The school has planted fifty trees this year.","स्कूल ने इस वर्ष पचास पेड़ लगाए हैं।","Present Perfect: वर्तमान अवधि से जुड़ा परिणाम।"],
+  ["The team will have reached the base camp by sunset.","सूर्यास्त तक दल आधार शिविर पहुँच चुका होगा।","Future Perfect: by + future time।"],
+  ["Water expands when it freezes under ordinary conditions.","सामान्य परिस्थितियों में पानी जमने पर फैलता है।","सामान्य वैज्ञानिक सत्य के लिए Present Simple।"],
+  ["The researchers have been examining the samples since Monday.","शोधकर्ता सोमवार से नमूनों की जाँच कर रहे हैं।","Since किसी शुरुआती समय को बताता है।"],
+  ["The United Nations was founded in 1945.","संयुक्त राष्ट्र की स्थापना 1945 में हुई थी।","Past Simple: इतिहास की पूर्ण घटना।"]
+ ],
+ narration:[
+  ["Mira said, “I am ready.” → Mira said that she was ready.","मीरा ने कहा, “मैं तैयार हूँ।” → मीरा ने कहा कि वह तैयार थी।","Past reporting verb के साथ सामान्यतः am → was; pronoun संदर्भ के अनुसार बदलता है।"],
+  ["He asked, “Where do you live?” → He asked where I lived.","उसने पूछा, “तुम कहाँ रहते हो?” → उसने पूछा कि मैं कहाँ रहता था।","Indirect question में प्रश्नवाचक शब्द के बाद सामान्य वाक्य-क्रम आता है।"],
+  ["She asked, “Did you see the comet?” → She asked whether I had seen the comet.","उसने पूछा, “क्या तुमने धूमकेतु देखा?” → उसने पूछा कि क्या मैंने धूमकेतु देखा था।","Yes/No question के लिए if/whether का प्रयोग होता है।"],
+  ["The teacher said, “The Earth revolves around the Sun.” → The teacher said that the Earth revolves around the Sun.","शिक्षक ने कहा, “पृथ्वी सूर्य की परिक्रमा करती है।” → शिक्षक ने कहा कि पृथ्वी सूर्य की परिक्रमा करती है।","सार्वभौमिक सत्य का tense सामान्यतः नहीं बदलता।"],
+  ["Ravi said, “I have finished my work.” → Ravi said that he had finished his work.","रवि ने कहा, “मैंने अपना काम पूरा कर लिया है।” → रवि ने कहा कि उसने अपना काम पूरा कर लिया था।","Present Perfect का सामान्य backshift Past Perfect होता है।"],
+  ["Mother said to me, “Please close the door.” → Mother requested me to close the door.","माँ ने मुझसे कहा, “कृपया दरवाज़ा बंद कर दो।” → माँ ने मुझसे दरवाज़ा बंद करने का अनुरोध किया।","विनम्र अनुरोध: requested + object + to-infinitive।"],
+  ["The coach said, “Do not give up.” → The coach urged the players not to give up.","कोच ने कहा, “हार मत मानो।” → कोच ने खिलाड़ियों से हार न मानने का आग्रह किया।","नकारात्मक आदेश: not to + V1।"],
+  ["She said, “What a beautiful painting!” → She exclaimed that it was a very beautiful painting.","उसने कहा, “कितनी सुंदर पेंटिंग है!” → उसने आश्चर्य से कहा कि वह बहुत सुंदर पेंटिंग थी।","Exclamation को भाव बनाए रखते हुए clause में बदला जाता है।"],
+  ["The scientist said, “We are testing a new method.” → The scientist said that they were testing a new method.","वैज्ञानिक ने कहा, “हम एक नई विधि का परीक्षण कर रहे हैं।” → वैज्ञानिक ने कहा कि वे एक नई विधि का परीक्षण कर रहे थे।","are testing → were testing; we का संदर्भ के अनुसार they।"],
+  ["He asked me, “Can you help me?” → He asked me if I could help him.","उसने मुझसे पूछा, “क्या तुम मेरी मदद कर सकते हो?” → उसने पूछा कि क्या मैं उसकी मदद कर सकता था।","Can का सामान्य backshift could होता है।"],
+  ["The guide said, “Keep the museum clean.” → The guide advised visitors to keep the museum clean.","गाइड ने कहा, “संग्रहालय साफ़ रखें।” → गाइड ने आगंतुकों को संग्रहालय साफ़ रखने की सलाह दी।","Advice: advised + object + to-infinitive।"],
+  ["She said, “I will return tomorrow.” → She said that she would return the next day.","उसने कहा, “मैं कल लौटूँगी।” → उसने कहा कि वह अगले दिन लौटेगी।","will → would; tomorrow → the next day, यदि समय-संदर्भ बदल गया हो।"],
+  ["The teacher said to the class, “Have you completed the task?” → The teacher asked the class whether they had completed the task.","शिक्षक ने कक्षा से पूछा, “क्या तुमने काम पूरा कर लिया है?” → शिक्षक ने पूछा कि क्या कक्षा ने काम पूरा कर लिया था।","Question को indirect speech में statement word order में लिखते हैं।"],
+  ["Arun said, “I cannot solve this problem.” → Arun said that he could not solve that problem.","अरुण ने कहा, “मैं यह सवाल हल नहीं कर सकता।” → अरुण ने कहा कि वह वह सवाल हल नहीं कर सकता था।","can → could; this → that, जब संदर्भ बदलता है।"],
+  ["The officer said, “Do not enter this area.” → The officer warned us not to enter that area.","अधिकारी ने कहा, “इस क्षेत्र में प्रवेश न करें।” → अधिकारी ने हमें उस क्षेत्र में प्रवेश न करने की चेतावनी दी।","Warning: warned + object + not to + V1।"],
+  ["She says, “I enjoy astronomy.” → She says that she enjoys astronomy.","वह कहती है, “मुझे खगोल विज्ञान पसंद है।” → वह कहती है कि उसे खगोल विज्ञान पसंद है।","Reporting verb present में है, इसलिए tense सामान्यतः नहीं बदलता।"],
+  ["He asked, “Why is the sky blue?” → He asked why the sky was blue.","उसने पूछा, “आकाश नीला क्यों है?” → उसने पूछा कि आकाश नीला क्यों था।","Indirect question में is → was सामान्य backshift है; वैज्ञानिक सत्य को संदर्भ के अनुसार present भी रखा जा सकता है।"],
+  ["The librarian said, “Return the books by Monday.” → The librarian instructed us to return the books by Monday.","पुस्तकालयाध्यक्ष ने कहा, “किताबें सोमवार तक लौटा देना।” → पुस्तकालयाध्यक्ष ने हमें सोमवार तक किताबें लौटाने का निर्देश दिया।","Instruction: instructed + object + to-infinitive।"],
+  ["He said, “Alas! We have lost the match.” → He exclaimed with sorrow that they had lost the match.","उसने कहा, “अफ़सोस! हम मैच हार गए हैं।” → उसने दुख के साथ कहा कि वे मैच हार गए थे।","भावसूचक शब्द को reporting phrase से व्यक्त किया जा सकता है।"],
+  ["The student said, “May I come in?” → The student asked if he might come in.","विद्यार्थी ने पूछा, “क्या मैं अंदर आ सकता हूँ?” → विद्यार्थी ने पूछा कि क्या वह अंदर आ सकता था।","Permission request को asked if/whether से report किया जा सकता है।"]
+ ],
+ voice:[
+  ["Scientists measure air quality every day. → Air quality is measured every day.","वैज्ञानिक हर दिन वायु की गुणवत्ता मापते हैं। → वायु की गुणवत्ता हर दिन मापी जाती है।","Present Simple Passive: is/am/are + V3।"],
+  ["The team is mapping the ocean floor. → The ocean floor is being mapped by the team.","दल समुद्र तल का मानचित्र बना रहा है। → दल द्वारा समुद्र तल का मानचित्र बनाया जा रहा है।","Present Continuous Passive: is/are being + V3।"],
+  ["The agency launched the satellite. → The satellite was launched by the agency.","एजेंसी ने उपग्रह प्रक्षेपित किया। → उपग्रह एजेंसी द्वारा प्रक्षेपित किया गया।","Past Simple Passive: was/were + V3।"],
+  ["Researchers have recorded the signal. → The signal has been recorded.","शोधकर्ताओं ने संकेत दर्ज कर लिया है। → संकेत दर्ज किया जा चुका है।","Present Perfect Passive: has/have been + V3।"],
+  ["We must protect wetlands. → Wetlands must be protected.","हमें आर्द्रभूमियों की रक्षा करनी चाहिए। → आर्द्रभूमियों की रक्षा की जानी चाहिए।","Modal Passive: modal + be + V3।"],
+  ["The laboratory is testing the water. → The water is being tested in the laboratory.","प्रयोगशाला पानी की जाँच कर रही है। → प्रयोगशाला में पानी की जाँच की जा रही है।","Passive में focus पानी और जाँच पर है।"],
+  ["The students cleaned the riverbank. → The riverbank was cleaned by the students.","विद्यार्थियों ने नदी का किनारा साफ़ किया। → विद्यार्थियों द्वारा नदी का किनारा साफ़ किया गया।","Object riverbank को passive subject बनाया गया है।"],
+  ["The guide gave us a map. → We were given a map by the guide.","गाइड ने हमें एक नक्शा दिया। → गाइड ने हमें एक नक्शा दिया / हमें गाइड द्वारा एक नक्शा दिया गया।","Double-object verb में recipient को भी passive subject बनाया जा सकता है।"],
+  ["People speak English in many countries. → English is spoken in many countries.","कई देशों में लोग अंग्रेज़ी बोलते हैं। → कई देशों में अंग्रेज़ी बोली जाती है।","General agent महत्त्वपूर्ण न हो तो by-phrase छोड़ा जा सकता है।"],
+  ["The team will publish the report tomorrow. → The report will be published tomorrow.","दल कल रिपोर्ट प्रकाशित करेगा। → रिपोर्ट कल प्रकाशित की जाएगी।","Future Passive: will be + V3।"],
+  ["The workers are repairing the bridge. → The bridge is being repaired by the workers.","मज़दूर पुल की मरम्मत कर रहे हैं। → मज़दूरों द्वारा पुल की मरम्मत की जा रही है।","Present Continuous Passive में being आवश्यक है।"],
+  ["The committee has approved the plan. → The plan has been approved by the committee.","समिति ने योजना को मंज़ूरी दे दी है। → समिति द्वारा योजना को मंज़ूरी दे दी गई है।","Present Perfect Passive: has been approved।"],
+  ["Someone stole my bicycle. → My bicycle was stolen.","किसी ने मेरी साइकिल चुरा ली। → मेरी साइकिल चोरी हो गई।","Agent अज्ञात या अप्रासंगिक हो तो उसे छोड़ा जा सकता है।"],
+  ["The school will organise a science fair. → A science fair will be organised by the school.","स्कूल विज्ञान मेले का आयोजन करेगा। → स्कूल द्वारा विज्ञान मेले का आयोजन किया जाएगा।","Future Passive में will be + V3 आता है।"],
+  ["The team may have damaged the sample. → The sample may have been damaged by the team.","हो सकता है कि दल ने नमूने को नुकसान पहुँचाया हो। → हो सकता है कि नमूना दल द्वारा क्षतिग्रस्त हुआ हो।","Perfect Modal Passive: may have been + V3।"],
+  ["They built this observatory in 1998. → This observatory was built in 1998.","उन्होंने यह वेधशाला 1998 में बनाई थी। → यह वेधशाला 1998 में बनाई गई थी।","Past Simple Passive: was built।"],
+  ["The doctor examined the patient. → The patient was examined by the doctor.","डॉक्टर ने मरीज़ की जाँच की। → मरीज़ की जाँच डॉक्टर ने की।","Passive sentence में receiver को प्रमुखता मिलती है।"],
+  ["The school has planted fifty trees. → Fifty trees have been planted by the school.","स्कूल ने पचास पेड़ लगाए हैं। → स्कूल द्वारा पचास पेड़ लगाए गए हैं।","Plural subject trees के साथ have been।"],
+  ["The storm damaged several houses. → Several houses were damaged by the storm.","तूफ़ान ने कई घरों को नुकसान पहुँचाया। → तूफ़ान से कई घर क्षतिग्रस्त हो गए।","Passive में कारण बताने के लिए by या due to जैसी रचना आ सकती है।"],
+  ["The baby slept peacefully.","बच्चा चैन से सोया।","Sleep यहाँ intransitive verb है; इसका सामान्य passive नहीं बनता।"]
+ ],
+ modals:[
+  ["Some birds can navigate using Earth’s magnetic field.","कुछ पक्षी पृथ्वी के चुंबकीय क्षेत्र की सहायता से दिशा पहचान सकते हैं।","Can: ability/capacity।"],
+  ["A small change in temperature may affect the experiment.","तापमान में थोड़ा-सा बदलाव प्रयोग को प्रभावित कर सकता है।","May: संभावना।"],
+  ["You must wear eye protection in the laboratory.","प्रयोगशाला में तुम्हें आँखों की सुरक्षा के लिए चश्मा पहनना अनिवार्य है।","Must: मज़बूत obligation।"],
+  ["Cities should provide safer cycling routes.","शहरों को साइकिल चलाने के लिए अधिक सुरक्षित मार्ग उपलब्ध कराने चाहिए।","Should: सलाह या अपेक्षा।"],
+  ["The ground is wet; it must have rained.","ज़मीन गीली है; ज़रूर बारिश हुई होगी।","Must have + V3: अतीत के बारे में मज़बूत अनुमान।"],
+  ["We should have checked the source before sharing the claim.","दावा साझा करने से पहले हमें स्रोत की जाँच कर लेनी चाहिए थी।","Should have + V3: बीते काम पर पछतावा/आलोचना।"],
+  ["The team could have finished earlier with better planning.","बेहतर योजना के साथ दल काम पहले पूरा कर सकता था।","Could have + V3: बीते समय में संभव अवसर।"],
+  ["You needn’t have printed every page; a digital copy was enough.","तुम्हें हर पन्ना छापने की ज़रूरत नहीं थी; डिजिटल प्रति ही काफ़ी थी।","Needn’t have + V3: काम हुआ, लेकिन आवश्यक नहीं था।"],
+  ["You must not feed the animals in this enclosure.","इस बाड़े में जानवरों को खाना खिलाना मना है।","Must not: निषेध; इसका अर्थ ‘ज़रूरी नहीं’ नहीं है।"],
+  ["May I borrow your dictionary?","क्या मैं तुम्हारी शब्दकोश कुछ समय के लिए ले सकता हूँ?","May I…?: विनम्र अनुमति माँगना।"],
+  ["Could you explain this diagram again, please?","क्या आप कृपया यह चित्र एक बार फिर समझा सकते हैं?","Could you…?: विनम्र अनुरोध।"],
+  ["It might snow in the mountains tonight.","आज रात पहाड़ों में बर्फ़ पड़ सकती है।","Might: संभावना, अक्सर may से कम निश्चित।"],
+  ["Passengers have to show their tickets before boarding.","यात्रियों को सवार होने से पहले अपने टिकट दिखाने पड़ते हैं।","Have to: नियम या बाहरी आवश्यकता।"],
+  ["You ought to apologise for the mistake.","तुम्हें अपनी गलती के लिए माफ़ी माँगनी चाहिए।","Ought to: नैतिक कर्तव्य/सलाह।"],
+  ["The lights are off; the office must be closed.","बत्तियाँ बंद हैं; कार्यालय ज़रूर बंद होगा।","Must be: वर्तमान के बारे में मज़बूत अनुमान।"],
+  ["She can speak three languages fluently.","वह तीन भाषाएँ धाराप्रवाह बोल सकती है।","Can: क्षमता।"],
+  ["You needn’t bring any food; lunch is provided.","तुम्हें खाना लाने की ज़रूरत नहीं है; दोपहर का भोजन उपलब्ध कराया जाएगा।","Needn’t: आवश्यकता का अभाव।"],
+  ["The medicine may cause drowsiness in some people.","यह दवा कुछ लोगों को उनींदा कर सकती है।","May: संभावित प्रभाव; यह निश्चितता नहीं बताता।"],
+  ["We would visit the library every Saturday as children.","बचपन में हम हर शनिवार पुस्तकालय जाया करते थे।","Would: अतीत की आदत, संदर्भ के अनुसार।"],
+  ["You should save a copy of your work.","तुम्हें अपने काम की एक प्रति सुरक्षित रखनी चाहिए।","Should: सलाह।"]
+ ],
+ clauses:[
+  ["What the telescope revealed surprised everyone.","दूरबीन से जो दिखाई दिया, उसने सबको चौंका दिया।","Noun Clause: “What the telescope revealed” वाक्य का subject है।"],
+  ["The scientist who led the mission received an award.","जिस वैज्ञानिक ने मिशन का नेतृत्व किया, उसे पुरस्कार मिला।","Relative/Adjective Clause: who-led-the-mission वैज्ञानिक के बारे में बताता है।"],
+  ["Although the road was flooded, the rescue team continued.","हालाँकि सड़क पर पानी भर गया था, फिर भी बचाव दल आगे बढ़ता रहा।","Adverb Clause of Concession: although विरोध/रियायत दिखाता है।"],
+  ["If communities save water, reservoirs may recover.","यदि समुदाय पानी बचाएँ, तो जलाशयों में पानी फिर बढ़ सकता है।","Conditional Clause: if शर्त बताता है।"],
+  ["The data collected yesterday are available now.","कल एकत्र किए गए आँकड़े अब उपलब्ध हैं।","Reduced Relative Clause: collected yesterday, data का वर्णन करता है।"],
+  ["To reduce waste, the school installed refill stations.","कचरा कम करने के लिए स्कूल ने दोबारा पानी भरने के स्टेशन लगाए।","Infinitive phrase “To reduce waste” उद्देश्य बताता है।"],
+  ["The book that I borrowed explains climate systems.","जो किताब मैंने उधार ली थी, वह जलवायु प्रणालियों को समझाती है।","Relative Clause, book के बारे में अतिरिक्त पहचान देता है।"],
+  ["Because the river rose overnight, the village moved to higher ground.","रातोंरात नदी का जलस्तर बढ़ जाने के कारण गाँव के लोग ऊँची जगह पर चले गए।","Adverb Clause of Reason: because कारण बताता है।"],
+  ["I believe that every child deserves a fair chance.","मेरा मानना है कि हर बच्चे को उचित अवसर मिलना चाहिए।","Noun Clause: that-clause, believe का object है।"],
+  ["The museum, which opened in 1920, attracts many visitors.","संग्रहालय, जो 1920 में खुला था, बहुत-से आगंतुकों को आकर्षित करता है।","Non-defining Relative Clause अतिरिक्त जानकारी देता है; commas आवश्यक हैं।"],
+  ["We stayed indoors because the air quality was poor.","हम घर के अंदर रहे क्योंकि हवा की गुणवत्ता खराब थी।","Adverb Clause of Reason।"],
+  ["Unless you practise regularly, your fluency may not improve.","यदि तुम नियमित अभ्यास नहीं करोगे, तो तुम्हारी धाराप्रवाह बोलने की क्षमता शायद नहीं सुधरेगी।","Unless का अर्थ ‘if…not’ होता है।"],
+  ["The student whose project won the prize thanked her teacher.","जिस विद्यार्थी की परियोजना को पुरस्कार मिला, उसने अपनी शिक्षिका को धन्यवाद दिया।","Whose possession/संबंध बताता है।"],
+  ["Where the river meets the sea, a rich ecosystem develops.","जहाँ नदी समुद्र से मिलती है, वहाँ एक समृद्ध पारिस्थितिकी तंत्र विकसित होता है।","Where-clause स्थान बताता है।"],
+  ["Although the task was difficult, the team completed it.","हालाँकि काम कठिन था, फिर भी दल ने उसे पूरा कर लिया।","Although concession दिखाता है; main clause विपरीत परिणाम बताता है।"],
+  ["The claim that the Earth is flat is false.","यह दावा कि पृथ्वी चपटी है, गलत है।","That-clause, claim noun की content बताता है।"],
+  ["Anyone who wants to join should register today.","जो भी शामिल होना चाहता है, उसे आज पंजीकरण करना चाहिए।","Who-clause, anyone की पहचान/शर्त बताता है।"],
+  ["After the rain stopped, the match resumed.","बारिश रुकने के बाद मैच फिर शुरू हुआ।","After-clause समय का संबंध बताता है।"],
+  ["The bridge built last year can carry heavy vehicles.","पिछले वर्ष बनाया गया पुल भारी वाहन ले जा सकता है।","Built last year एक reduced relative clause है।"],
+  ["She studied hard so that she could pass the examination.","उसने मेहनत से पढ़ाई की ताकि वह परीक्षा पास कर सके।","So that purpose बताता है।"]
+ ]
+ };
+
+ sets.articles=[
+  ["She bought a useful book.","उसने एक उपयोगी किताब खरीदी।","A: useful की शुरुआत ‘यू’ consonant sound से होती है।"],
+  ["He waited for an hour.","उसने एक घंटे तक इंतज़ार किया।","An: hour में h silent है।"],
+  ["The Sun rises in the east.","सूर्य पूर्व में उगता है।","The: अद्वितीय/विशिष्ट वस्तु।"],
+  ["Milk contains calcium.","दूध में कैल्शियम होता है।","Zero article: milk सामान्य अर्थ में uncountable noun है।"],
+  ["She is an honest officer.","वह एक ईमानदार अधिकारी है।","An honest: vowel sound।"]
+ ];
+ sets.determiners=[
+  ["There are many books on the shelf.","शेल्फ पर बहुत-सी किताबें हैं।","Many plural countable nouns के साथ।"],
+  ["We have little time left.","हमारे पास बहुत कम समय बचा है।","Little uncountable noun के साथ, लगभग नहीं का अर्थ।"],
+  ["A few students volunteered.","कुछ विद्यार्थियों ने स्वयंसेवा की।","A few का सकारात्मक अर्थ है।"],
+  ["Each child received a certificate.","प्रत्येक बच्चे को प्रमाणपत्र मिला।","Each के साथ singular noun/verb।"],
+  ["Do you have any questions?","क्या आपके कोई प्रश्न हैं?","Any सामान्यतः प्रश्न में।"]
+ ];
+ sets.prepositions=[
+  ["The class begins at eight o’clock.","कक्षा आठ बजे शुरू होती है।","At + exact time।"],
+  ["Her birthday is on Monday.","उसका जन्मदिन सोमवार को है।","On + day।"],
+  ["They moved here in 2022.","वे 2022 में यहाँ आए।","In + year।"],
+  ["The keys are on the table.","चाबियाँ मेज़ पर हैं।","On surface बताता है।"],
+  ["She has worked here for five years.","वह यहाँ पाँच वर्षों से काम कर रही है।","For + duration।"]
+ ];
+ sets.conjunctions=[
+  ["I was tired, but I finished the work.","मैं थका हुआ था, लेकिन मैंने काम पूरा किया।","But contrast दिखाता है।"],
+  ["We stayed home because it was raining.","हम घर पर रहे क्योंकि बारिश हो रही थी।","Because कारण बताता है।"],
+  ["Study regularly, and you will improve.","नियमित पढ़ाई करो और तुम बेहतर हो जाओगे।","And दो clauses जोड़ता है।"],
+  ["Although he was nervous, he spoke clearly.","हालाँकि वह घबराया हुआ था, फिर भी उसने स्पष्ट बोला।","Although concession दिखाता है।"],
+  ["Either Riya or Aman will lead the team.","रिया या अमन में से कोई टीम का नेतृत्व करेगा।","Either…or दो विकल्प जोड़ता है।"]
+ ];
+ sets.nonfinites=[
+  ["She hopes to become a doctor.","वह डॉक्टर बनने की आशा करती है।","To become: infinitive।"],
+  ["Swimming is good exercise.","तैरना अच्छा व्यायाम है।","Swimming noun की तरह: gerund।"],
+  ["The broken chair was repaired.","टूटी कुर्सी की मरम्मत की गई।","Broken: past participle adjective।"],
+  ["Walking along the river, we saw birds.","नदी के किनारे चलते हुए हमने पक्षी देखे।","Walking participle phrase है।"],
+  ["He enjoys reading novels.","उसे उपन्यास पढ़ना पसंद है।","Enjoy के बाद gerund।"]
+ ];
+ sets.agreement=[
+  ["The list of names is ready.","नामों की सूची तैयार है।","Subject list singular है।"],
+  ["Everyone wants to succeed.","हर कोई सफल होना चाहता है।","Everyone singular verb लेता है।"],
+  ["The students are preparing for the test.","विद्यार्थी परीक्षा की तैयारी कर रहे हैं।","Plural subject के साथ are।"],
+  ["Neither the teacher nor the students are late.","न शिक्षक और न विद्यार्थी देर से हैं।","निकट subject students plural है।"],
+  ["The information is accurate.","जानकारी सटीक है।","Information uncountable singular noun है।"]
+ ];
+ sets.transform=[
+  ["He was ill, so he stayed home.","वह बीमार था, इसलिए घर पर रहा।","Compound sentence: so परिणाम जोड़ता है।"],
+  ["Being tired, she went to bed early.","थकी होने के कारण वह जल्दी सो गई।","Being tired: participial phrase वाला simple structure।"],
+  ["I know that he is honest.","मैं जानता हूँ कि वह ईमानदार है।","Complex sentence: that-clause object है।"],
+  ["The box is too heavy for me to lift.","डिब्बा इतना भारी है कि मैं उसे उठा नहीं सकता।","Too…to असमर्थता दिखाता है।"],
+  ["Despite the rain, the match continued.","बारिश के बावजूद मैच जारी रहा।","Despite के बाद noun/gerund phrase आता है।"]
+ ];
+ sets.conditionals=[
+  ["If you heat ice, it melts.","यदि बर्फ को गर्म करो, तो वह पिघलती है।","Zero conditional: सामान्य तथ्य।"],
+  ["If it rains, we will cancel the picnic.","यदि बारिश हुई, तो हम पिकनिक रद्द कर देंगे।","First conditional: possible future।"],
+  ["If I were taller, I would play basketball.","यदि मैं लंबा होता, तो बास्केटबॉल खेलता।","Second conditional: hypothetical situation।"],
+  ["If she had studied, she would have passed.","यदि उसने पढ़ाई की होती, तो वह पास हो गई होती।","Third conditional: unreal past।"],
+  ["Unless you hurry, you will miss the bus.","यदि तुम जल्दी नहीं करोगे, तो बस छूट जाएगी।","Unless = if…not।"]
+ ];
+ sets.questiontags=[
+  ["You are ready, aren’t you?","तुम तैयार हो, है न?","Positive statement + negative tag।"],
+  ["She doesn’t drive, does she?","वह गाड़ी नहीं चलाती, है न?","Negative statement + positive tag।"],
+  ["They went home, didn’t they?","वे घर गए, है न?","Past Simple में did का tag।"],
+  ["Let’s begin, shall we?","चलो शुरू करें, ठीक है?","Let’s के साथ shall we।"],
+  ["I am right, aren’t I?","मैं सही हूँ, है न?","I am का प्रचलित tag aren’t I।"]
+ ];
+ sets.error=[
+  ["She goes to school every day.","वह हर दिन स्कूल जाती है।","She go नहीं, She goes सही है।"],
+  ["He bought a new umbrella yesterday.","उसने कल एक नया छाता खरीदा।","Yesterday के साथ Past Simple।"],
+  ["I am interested in science.","मुझे विज्ञान में रुचि है।","Interested in fixed preposition है।"],
+  ["We discussed the problem.","हमने समस्या पर चर्चा की।","Discuss के बाद about नहीं।"],
+  ["Each of the players is ready.","प्रत्येक खिलाड़ी तैयार है।","Each singular verb लेता है।"]
+ ];
+ const patterns=sets[t.key]||t.rules.map(r=>[r[2],r[3],r[1]]);
+ const out=[];
+ for(let i=0;i<500;i++){
+  const p=patterns[i%patterns.length];
+  out.push({n:i+1,sentence:p[0],meaning:p[1],why:p[2],tag:(i%4===0?'GK / Concept':i%4===1?'Structure':i%4===2?'Exam Pattern':'Advanced Use')});
+ }
+ return out;
+}
+function exercisesFor(t){
+ const bank=examplesFor(t);
+ const specialisedKeys=['sentence','phrase','parts','noun','pronoun','adjective','verb','adverb','interjection','writing','analysis','wordorder','idioms','spelling','reported','irregularverbs','sequence','synthesis','punctuation','verbpatterns'];
+ if(specialisedKeys.includes(t.key)){
+  const ex=[];
+  for(let i=0;i<120;i++){
+   const r=t.rules[i%t.rules.length];
+   const templates=[
+    {q:`In the example “${r[2]}”, which rule is being demonstrated?`,a:r[0],why:r[1]},
+    {q:`Choose the most accurate explanation for “${r[2]}”.`,a:r[1],why:`Rule: ${r[0]}. Example meaning: ${r[3]}`},
+    {q:`Which grammar label best matches this example: “${r[2]}”?`,a:r[0],why:`${r[0]}: ${r[1]}`},
+    {q:`Read “${r[2]}”. What should a learner notice?`,a:r[3],why:`${r[0]} — ${r[1]}`}
+   ][i%4];
+   const alternatives=t.rules.map(x=>x[0]).filter(x=>x!==templates.a);
+   const distractors=[...new Set([alternatives[(i+1)%Math.max(1,alternatives.length)]||'Another grammar pattern',alternatives[(i+2)%Math.max(1,alternatives.length)]||'Incorrect structure',alternatives[(i+3)%Math.max(1,alternatives.length)]||'Unrelated rule'])].slice(0,3);
+   let opts=[templates.a,...distractors]; while(opts.length<4)opts.push('Incorrect or unrelated rule');
+   // For explanation/meaning prompts, preserve one correct option and plausible distractors.
+   if(i%4===1||i%4===3){opts=[templates.a,`It describes ${t.name.toLowerCase()} generally.`,`It is a punctuation-only rule.`,`It changes the meaning without changing structure.`]}
+   ex.push({n:i+1,q:templates.q,answer:templates.a,options:opts,reason:templates.why,related:r[2]});
+  }
+  return ex;
+ }
+ const people=['The science teacher','The research team','The students','The village council','The engineers','The doctor','The librarian','The conservation group','The journalist','The coach','The principal','The scientists','The farmer','The rescue workers','The committee','The museum guide','The young inventor','The local residents','The space agency','The history teacher'];
+ const things=['the report','the experiment','the old bridge','the water samples','the final results','the safety rules','the new telescope','the historical records','the school garden','the damaged road','the research paper','the clean-energy project','the rare manuscript','the rescue plan','the survey','the public notice','the science model','the river data','the exhibition','the application'];
+ const verbs=[['complete','completed','completed','completing'],['prepare','prepared','prepared','preparing'],['inspect','inspected','inspected','inspecting'],['publish','published','published','publishing'],['repair','repaired','repaired','repairing'],['record','recorded','recorded','recording'],['design','designed','designed','designing'],['protect','protected','protected','protecting'],['analyse','analysed','analysed','analysing'],['discover','discovered','discovered','discovering']];
+ const ex=[];
+ for(let i=0;i<500;i++){
+  const p=people[i%20],o=things[Math.floor(i/20)%20],[v,v2,v3,ing]=verbs[Math.floor(i/100)%10],k=i%10; const plural=/samples|results|rules|records|panels|levels|researchers|residents/i.test(o); const bePast=plural?'were':'was', bePerf=plural?'have been':'has been', beNow=plural?'are':'is', beNowIng=plural?'are being':'is being', bePastIng=plural?'were being':'was being';
+  let q='',answer='',options=[],reason='';
+  if(t.key==='voice'){
+   const z=[
+    [`Change into passive voice: “${p} ${v2} ${o} yesterday.”`,`${o[0].toUpperCase()+o.slice(1)} ${bePast} ${v3} by ${p.toLowerCase()} yesterday.`,`was + V3 forms the Past Simple passive.`],
+    [`Choose the correct passive form of “${p} is ${ing} ${o} now.”`,`${o[0].toUpperCase()+o.slice(1)} ${beNowIng} ${v3} by ${p.toLowerCase()} now.`,`Present Continuous passive = is/are being + V3.`],
+    [`Change into passive voice: “${p} has ${v3} ${o}.”`,`${o[0].toUpperCase()+o.slice(1)} ${bePerf} ${v3} by ${p.toLowerCase()}.`,`Present Perfect passive = has/have been + V3.`],
+    [`Choose the correct passive sentence for “${p} will ${v} ${o} tomorrow.”`,`${o[0].toUpperCase()+o.slice(1)} will be ${v3} by ${p.toLowerCase()} tomorrow.`,`Future passive = will be + V3.`],
+    [`Change into passive voice: “${p} can ${v} ${o}.”`,`${o[0].toUpperCase()+o.slice(1)} can be ${v3} by ${p.toLowerCase()}.`,`Modal passive = modal + be + V3.`],
+    [`Choose the passive form of “${p} was ${ing} ${o} at noon.”`,`${o[0].toUpperCase()+o.slice(1)} ${bePastIng} ${v3} by ${p.toLowerCase()} at noon.`,`Past Continuous passive = was/were being + V3.`],
+    [`Change into passive voice: “${p} had ${v3} ${o} before sunset.”`,`${o[0].toUpperCase()+o.slice(1)} had been ${v3} by ${p.toLowerCase()} before sunset.`,`Past Perfect passive = had been + V3.`],
+    [`Choose the correct passive form of “${p} must ${v} ${o}.”`,`${o[0].toUpperCase()+o.slice(1)} must be ${v3} by ${p.toLowerCase()}.`,`Modal passive = modal + be + V3.`],
+    [`Change into passive voice: “${p} is going to ${v} ${o}.”`,`${o[0].toUpperCase()+o.slice(1)} is going to be ${v3} by ${p.toLowerCase()}.`,`Going-to passive = is/are going to be + V3.`],
+    [`Choose the correct passive form of “${p} should ${v} ${o} carefully.”`,`${o[0].toUpperCase()+o.slice(1)} should be ${v3} carefully by ${p.toLowerCase()}.`,`Should passive = should be + V3.`]
+   ][k]; q=z[0];answer=z[1];reason=z[2];
+   options=[answer,`${o[0].toUpperCase()+o.slice(1)} ${v3} by ${p.toLowerCase()}.`,`${o[0].toUpperCase()+o.slice(1)} has ${v3} yesterday.`,`${o[0].toUpperCase()+o.slice(1)} is ${v2} tomorrow.`];
+  }else if(t.key==='tense'){
+   const z=[
+    [`Choose the correct form: ${p} usually ___ ${o}.`,v,[v,`is ${ing}`,v2,`has ${v3}`],'Habits and routines के लिए Present Simple प्रयोग होता है।'],
+    [`Complete: At the moment, ${p.toLowerCase()} ___ ${o}.`,`is ${ing}`,[`is ${ing}`,v,v2,`has ${v3}`],'At the moment जारी कार्य का संकेत है; Present Continuous उपयुक्त है।'],
+    [`Choose the correct form: Yesterday, ${p.toLowerCase()} ___ ${o}.`,v2,[v2,v,`has ${v3}`,`will ${v}`],'Yesterday के साथ Past Simple प्रयोग होता है।'],
+    [`Complete: By next Monday, ${p.toLowerCase()} will have ___ ${o}.`,v3,[v3,v,v2,ing],'Future Perfect में will have + V3 आता है।'],
+    [`Choose the correct form: ${p} has already ___ ${o}.`,v3,[v3,v,v2,ing],'Has/have के बाद Present Perfect में V3 आता है।'],
+    [`Complete: While ${p.toLowerCase()} was working, the team ___ ${o}.`,`was ${ing}`,[`was ${ing}`,v2,`has ${v3}`,`will ${v}`],'Past में जारी कार्य के लिए Past Continuous प्रयोग होता है।'],
+    [`Choose the correct form: By 2030, ${p.toLowerCase()} will have been ___ ${o} for five years.`,ing,[ing,v3,v2,v],'Future Perfect Continuous = will have been + V-ing.'],
+    [`Complete: If the team works carefully, it ___ ${o}.`,`will ${v}`,[`will ${v}`,v2,`has ${v3}`,`would have ${v3}`],'First conditional में if-clause Present Simple और main clause में will + V1 आता है।'],
+    [`Choose the correct form: ${p} ___ ${o} since early morning.`,`has been ${ing}`,[`has been ${ing}`,`is ${ing}`,v2,`will ${v}`],'जारी गतिविधि पर जोर देने के लिए Present Perfect Continuous प्रयोग हो सकता है।'],
+    [`Identify the tense: “${p} had ${v3} ${o} before the meeting began.”`,'Past Perfect',['Past Perfect','Past Simple','Present Perfect','Future Perfect'],'Past में दूसरी घटना से पहले पूरी हुई घटना के लिए Past Perfect आता है।']
+   ][k];[q,answer,options,reason]=z;
+  }else if(t.key==='narration'){
+   const z=[
+    [`Change into indirect speech: ${p} said, “I ${v} ${o} every week.”`,`${p} said that they ${v} ${o} every week.`,`said + that-clause reports a statement; pronouns depend on context.`],
+    [`Report the request: ${p} said to the team, “Please ${v} ${o}.”`,`${p} requested the team to ${v} ${o}.`,`Polite request = requested + object + to + V1.`],
+    [`Change into indirect speech: ${p} said, “I have ${v3} ${o}.”`,`${p} said that they had ${v3} ${o}.`,`Present Perfect usually backshifts to Past Perfect in reported speech.`],
+    [`Report the question: ${p} asked me, “Did you ${v} ${o}?”`,`${p} asked me whether I had ${v3} ${o}.`,`Yes/no indirect questions use if/whether and statement word order.`],
+    [`Change into indirect speech: ${p} said, “We are ${ing} ${o}.”`,`${p} said that they were ${ing} ${o}.`,`Present Continuous commonly backshifts to Past Continuous.`],
+    [`Report the advice: ${p} said to us, “You should ${v} ${o}.”`,`${p} advised us to ${v} ${o}.`,`Advice = advised + object + to-infinitive.`],
+    [`Change into indirect speech: ${p} said, “I will ${v} ${o} tomorrow.”`,`${p} said that they would ${v} ${o} the next day.`,`Will commonly changes to would; tomorrow may change to the next day.`],
+    [`Report the negative command: ${p} said to us, “Do not ${v} ${o}.”`,`${p} told us not to ${v} ${o}.`,`Negative command = told + object + not to + V1.`],
+    [`Change into indirect speech: ${p} said, “I was ${ing} ${o}.”`,`${p} said that they had been ${ing} ${o}.`,`Past Continuous may backshift to Past Perfect Continuous.`],
+    [`Report the question: ${p} asked, “Where can I ${v} ${o}?”`,`${p} asked where they could ${v} ${o}.`,`Indirect wh-questions use statement word order.`]
+   ][k];q=z[0];answer=z[1];reason=z[2];options=[answer,answer.replace('that they','that I'),`${p} asked that ${v} ${o}.`,`${p} told that they ${v} ${o}.`];
+  }else if(t.key==='modals'){
+   const z=[
+    [`The instructions make this compulsory: ${p} ___ ${v} ${o}.`,'must',['must','might','could have','needn’t'],'Must expresses obligation or necessity.'],
+    [`It is advisable for ${p.toLowerCase()} to do this: ${p} ___ ${v} ${o}.`,'should',['should','can’t','mustn’t','would have'],'Should is commonly used for advice.'],
+    [`The evidence is strong: ${p} ___ have ${v3} ${o}.`,'must',['must','might not','needn’t','would'],'Must have + V3 expresses a strong deduction about the past.'],
+    [`The rule strictly forbids it: ${p} ___ ${v} ${o} here.`,'must not',['must not','need not','could','would'],'Must not expresses prohibition.'],
+    [`It is possible that ${p.toLowerCase()} will ___ ${o} later.`,'might '+v,['might '+v,'must have '+v3,'should have '+v3,'needn’t '+v],'Might expresses possibility.'],
+    [`The task was unnecessary but was done: ${p} needn’t have ___ ${o}.`,v3,[v3,v,v2,ing],'Needn’t have + V3 means the action happened but was unnecessary.'],
+    [`There is no way the claim is true. The witness ___ be correct.`,'cannot',['cannot','must','should','may'],'Cannot expresses impossibility or a strong negative deduction.'],
+    [`The safety guidance recommends it: Everyone ___ follow the rules.`,'should',['should','might','would have','needn’t'],'Should expresses recommendation.'],
+    [`In the past, the machine was able to ___ ${o}.`,'could '+v,['could '+v,'can '+v,'must '+v3,'should have '+v3],'Could can express past ability.'],
+    [`It would have been better to act earlier: ${p} should have ___ ${o}.`,v3,[v3,v,v2,ing],'Should have + V3 can express regret or criticism about the past.']
+   ][k];q=z[0];answer=z[1];options=z[2];reason=z[3];
+  }else if(['articles','determiners','prepositions','conjunctions','nonfinites','agreement','transform','conditionals','questiontags','error'].includes(t.key)){
+   const item=bank[(i*7+3)%bank.length];
+   const pool=bank.filter(x=>x.why!==item.why).map(x=>x.why);
+   const wrong=[]; for(let j=0;j<pool.length && wrong.length<3;j++){const candidate=pool[(i+j*3)%pool.length];if(candidate!==item.why&&!wrong.includes(candidate))wrong.push(candidate)}
+   while(wrong.length<3) wrong.push('Check the grammar rule and sentence structure carefully.');
+   const options=[item.why,...wrong].sort((a,b)=>((a.length*13+i*7)%97)-((b.length*13+i*7)%97));
+   q=`Choose the correct explanation for: “${item.sentence}”`;
+   answer=item.why; options=options; reason=item.why;
+  }else{
+   const z=[
+    [`Identify the clause type: “${p}, who works carefully, checked ${o}.”`,'Adjective / relative clause',['Noun clause','Adverb clause','Adjective / relative clause','Main clause'],'The who-clause describes the person and is a relative clause.'],
+    [`Complete: “___ the data was incomplete, the team repeated the test.”`,'Because',['Although','Because','Unless','Where'],'Because introduces a reason clause.'],
+    [`Identify the noun clause: “The teacher explained why ${o} mattered.”`,'why '+o,['The teacher explained','why '+o,'mattered','the teacher'],'The why-clause acts as the object of explained.'],
+    [`In “The team continued although the weather was severe,” the although-clause expresses:`,'Concession',['Time','Reason','Concession','Purpose'],'Although introduces contrast or concession.'],
+    [`Choose the conjunction of purpose: “They saved the records ___ future researchers could use them.”`,'so that',['because','although','so that','unless'],'So that introduces a purpose clause.'],
+    [`Identify the adverb clause: “When the bell rang, the students entered the room.”`,'When the bell rang',['the students entered','the room','When the bell rang','the bell'],'The when-clause tells when the main action happened.'],
+    [`Which word introduces the relative clause: “The book that you recommended is useful”?`,'that',['because','unless','that','although'],'That introduces a relative clause describing book.'],
+    [`Complete the condition: “___ we protect wetlands, many species will lose their habitat.”`,'Unless',['Although','Unless','Whereas','After'],'Unless means “if not” and introduces a negative condition.'],
+    [`In “What the scientist discovered changed the theory,” the opening clause functions as:`,'Noun clause / subject',['Adjective clause','Adverb clause','Noun clause / subject','Prepositional phrase'],'The whole what-clause functions as the subject of changed.'],
+    [`Identify the time clause: “After the storm passed, the rescue team returned.”`,'After the storm passed',['the rescue team','returned','After the storm passed','the storm'],'The after-clause tells when the team returned.']
+   ][k];q=z[0];answer=z[1];options=z[2];reason=z[3];
+  }
+  q=q.replace(/\s+/g,' ').trim();
+  ex.push({n:i+1,q,answer,options,reason,related:bank[(i*7+3)%bank.length].sentence});
+ }
+ return ex;
+}
+
+const tenseDetails=[
+{name:'Present Indefinite / Simple',group:'Present',structure:'Affirmative: Subject + V1(s/es) + object. | Negative: Subject + do/does not + V1 + object. | Interrogative: Do/Does + subject + V1 + object?',use:'आदत, रोज़मर्रा के काम, वैज्ञानिक/सामान्य सत्य, स्थायी स्थिति और timetable के लिए। He/She/It या singular noun के साथ affirmative में verb पर सामान्यतः -s/-es लगता है। Negative और question में does आने पर main verb V1 रहता है।',signals:'usually, always, often, every day, sometimes, never, generally',affirm:['The Earth revolves around the Sun. — पृथ्वी सूर्य की परिक्रमा करती है।','She reads the newspaper every morning. — वह हर सुबह अख़बार पढ़ती है।','Our school opens at 8 a.m. — हमारा स्कूल सुबह 8 बजे खुलता है।'],negative:['The Earth does not revolve around the Moon. — पृथ्वी चंद्रमा की परिक्रमा नहीं करती।','She does not read the newspaper at night. — वह रात में अख़बार नहीं पढ़ती।','They do not waste drinking water. — वे पीने का पानी बर्बाद नहीं करते।'],question:['Does the Earth revolve around the Sun? — क्या पृथ्वी सूर्य की परिक्रमा करती है?','Does she read the newspaper every morning? — क्या वह हर सुबह अख़बार पढ़ती है?','Do they play hockey after school? — क्या वे स्कूल के बाद हॉकी खेलते हैं?'],mistake:'गलत: Does she reads…? सही: Does she read…? Does के बाद V1 आता है।'},
+{name:'Present Continuous',group:'Present',structure:'Affirmative: Subject + am/is/are + V-ing. | Negative: Subject + am/is/are + not + V-ing. | Interrogative: Am/Is/Are + subject + V-ing?',use:'बोलते समय जारी काम, अस्थायी स्थिति, बदलती परिस्थिति और पहले से तय निकट भविष्य की योजना के लिए। I के साथ am, he/she/it के साथ is और you/we/they के साथ are।',signals:'now, right now, at the moment, currently, these days, Look!, Listen!',affirm:['The students are discussing climate change. — विद्यार्थी जलवायु परिवर्तन पर चर्चा कर रहे हैं।','I am learning English grammar. — मैं अंग्रेज़ी व्याकरण सीख रहा/रही हूँ।','The river is rising after the heavy rain. — भारी बारिश के बाद नदी का जलस्तर बढ़ रहा है।'],negative:['The students are not making noise. — विद्यार्थी शोर नहीं कर रहे हैं।','I am not using the computer now. — मैं अभी कंप्यूटर इस्तेमाल नहीं कर रहा/रही हूँ।','The machine is not working properly. — मशीन ठीक से काम नहीं कर रही है।'],question:['Are the students discussing climate change? — क्या विद्यार्थी जलवायु परिवर्तन पर चर्चा कर रहे हैं?','Am I speaking too quickly? — क्या मैं बहुत तेज़ बोल रहा/रही हूँ?','Is the river rising? — क्या नदी का जलस्तर बढ़ रहा है?'],mistake:'Know, believe, own, belong जैसे stative verbs सामान्य अर्थ में प्रायः continuous में नहीं आते: I know the answer (न कि I am knowing…).'},
+{name:'Present Perfect',group:'Present',structure:'Affirmative: Subject + has/have + V3. | Negative: Subject + has/have + not + V3. | Interrogative: Has/Have + subject + V3?',use:'बीते काम का वर्तमान परिणाम, जीवन-अनुभव, अभी-अभी पूरा हुआ काम या ऐसा समय-अंतराल जो अभी समाप्त नहीं हुआ। निश्चित बीते समय (yesterday, in 2020) के साथ सामान्यतः Past Simple आता है।',signals:'already, just, yet, ever, never, recently, so far, since/for (कुछ संदर्भों में)',affirm:['Scientists have discovered a new species. — वैज्ञानिकों ने एक नई प्रजाति खोजी है।','She has finished her assignment. — उसने अपना कार्य पूरा कर लिया है।','We have visited the science museum twice. — हम विज्ञान संग्रहालय दो बार जा चुके हैं।'],negative:['Scientists have not confirmed the result yet. — वैज्ञानिकों ने अभी तक परिणाम की पुष्टि नहीं की है।','She has not finished her assignment. — उसने अपना कार्य पूरा नहीं किया है।','I have never seen a solar eclipse. — मैंने कभी सूर्य ग्रहण नहीं देखा है।'],question:['Have scientists discovered a new species? — क्या वैज्ञानिकों ने नई प्रजाति खोजी है?','Has she finished her assignment? — क्या उसने अपना कार्य पूरा कर लिया है?','Have you ever visited a planetarium? — क्या तुम कभी तारामंडल गए हो?'],mistake:'गलत: She has went. सही: She has gone. Has/have के बाद V3 चाहिए।'},
+{name:'Present Perfect Continuous',group:'Present',structure:'Affirmative: Subject + has/have + been + V-ing. | Negative: Subject + has/have + not + been + V-ing. | Interrogative: Has/Have + subject + been + V-ing?',use:'ऐसा काम जो पहले शुरू हुआ और अब तक जारी है, या जिसका हाल का प्रभाव दिखाई देता है। अवधि पर ज़ोर हो तो for + duration और शुरुआती बिंदु के लिए since + point प्रयोग करें।',signals:'since, for, all day, lately, recently, how long',affirm:['She has been studying for two hours. — वह दो घंटे से पढ़ रही है।','It has been raining since dawn. — सुबह से बारिश हो रही है।','The team has been testing the device all week. — टीम पूरे सप्ताह उपकरण का परीक्षण कर रही है।'],negative:['She has not been sleeping well lately. — वह हाल में अच्छी तरह नहीं सो रही है।','It has not been raining for long. — लंबे समय से बारिश नहीं हो रही है।','We have not been waiting very long. — हम बहुत देर से इंतज़ार नहीं कर रहे हैं।'],question:['Has she been studying for two hours? — क्या वह दो घंटे से पढ़ रही है?','Has it been raining since dawn? — क्या सुबह से बारिश हो रही है?','How long have they been testing the device? — वे कितने समय से उपकरण का परीक्षण कर रहे हैं?'],mistake:'Since = शुरुआती बिंदु (since Monday); for = अवधि (for three hours). Stative verbs के साथ यह tense सामान्यतः कम आता है।'},
+{name:'Past Indefinite / Simple',group:'Past',structure:'Affirmative: Subject + V2. | Negative: Subject + did not + V1. | Interrogative: Did + subject + V1?',use:'अतीत में किसी निश्चित या समाप्त समय पर पूरी हुई घटना, कहानी के क्रमिक कार्य और ऐतिहासिक घटनाओं के लिए। Negative/question में did के बाद V1 आता है।',signals:'yesterday, last week, ago, in 2022, then, once',affirm:['India launched Chandrayaan-3 in 2023. — भारत ने 2023 में चंद्रयान-3 का प्रक्षेपण किया।','The students completed the project yesterday. — विद्यार्थियों ने कल परियोजना पूरी की।','Marie Curie won Nobel Prizes in two scientific fields. — मैरी क्यूरी ने दो वैज्ञानिक क्षेत्रों में नोबेल पुरस्कार जीते।'],negative:['India did not launch Chandrayaan-3 in 2022. — भारत ने चंद्रयान-3 का प्रक्षेपण 2022 में नहीं किया।','The students did not complete the project yesterday. — विद्यार्थियों ने कल परियोजना पूरी नहीं की।','He did not attend the meeting. — वह बैठक में शामिल नहीं हुआ।'],question:['Did India launch Chandrayaan-3 in 2023? — क्या भारत ने 2023 में चंद्रयान-3 का प्रक्षेपण किया?','Did the students complete the project? — क्या विद्यार्थियों ने परियोजना पूरी की?','When did the train leave? — ट्रेन कब रवाना हुई?'],mistake:'गलत: Did she went? सही: Did she go? Did के बाद V1 आता है।'},
+{name:'Past Continuous',group:'Past',structure:'Affirmative: Subject + was/were + V-ing. | Negative: Subject + was/were + not + V-ing. | Interrogative: Was/Were + subject + V-ing?',use:'अतीत के किसी खास समय पर जारी काम, किसी दूसरी घटना के समय चल रही गतिविधि, या background description के लिए। I/he/she/it के साथ was; you/we/they के साथ were।',signals:'while, as, at 8 p.m. yesterday, this time last week',affirm:['At 8 p.m., the students were revising grammar. — रात 8 बजे विद्यार्थी व्याकरण दोहरा रहे थे।','I was reading when the lights went out. — जब बिजली गई, तब मैं पढ़ रहा/रही था/थी।','The scientists were observing the eclipse. — वैज्ञानिक ग्रहण का अवलोकन कर रहे थे।'],negative:['The students were not talking during the test. — परीक्षा के दौरान विद्यार्थी बात नहीं कर रहे थे।','I was not sleeping at that time. — उस समय मैं सो नहीं रहा/रही था/थी।','The scientists were not using the old instrument. — वैज्ञानिक पुराने उपकरण का उपयोग नहीं कर रहे थे।'],question:['Were the students revising at 8 p.m.? — क्या विद्यार्थी रात 8 बजे दोहरा रहे थे?','Was I speaking when you arrived? — क्या तुम्हारे आने पर मैं बोल रहा/रही था/थी?','What were the scientists observing? — वैज्ञानिक किसका अवलोकन कर रहे थे?'],mistake:'While के साथ अक्सर जारी action (Past Continuous) और when के साथ बीच में हुई घटना (Past Simple) आती है, लेकिन यह कठोर नियम नहीं है।'},
+{name:'Past Perfect',group:'Past',structure:'Affirmative: Subject + had + V3. | Negative: Subject + had not + V3. | Interrogative: Had + subject + V3?',use:'अतीत की दो घटनाओं में जो घटना पहले पूरी हो चुकी थी, उसे स्पष्ट करने के लिए। हर Past Simple sentence में had लगाने की आवश्यकता नहीं होती।',signals:'before, after, by the time, already (जब दो past events का क्रम स्पष्ट करना हो)',affirm:['The train had left before we reached the station. — हमारे स्टेशन पहुँचने से पहले ट्रेन जा चुकी थी।','She had completed the work by noon. — वह दोपहर तक काम पूरा कर चुकी थी।','The team had collected the data before the storm began. — तूफ़ान शुरू होने से पहले टीम आँकड़े एकत्र कर चुकी थी।'],negative:['The train had not left when we reached the station. — हमारे स्टेशन पहुँचने पर ट्रेन नहीं गई थी।','She had not completed the work by noon. — उसने दोपहर तक काम पूरा नहीं किया था।','They had not seen the warning before the test. — उन्होंने परीक्षण से पहले चेतावनी नहीं देखी थी।'],question:['Had the train left before you arrived? — क्या तुम्हारे आने से पहले ट्रेन जा चुकी थी?','Had she completed the work by noon? — क्या उसने दोपहर तक काम पूरा कर लिया था?','Why had the team stopped the experiment? — टीम ने प्रयोग क्यों रोक दिया था?'],mistake:'Had के बाद हमेशा V3: had gone, had written, had seen।'},
+{name:'Past Perfect Continuous',group:'Past',structure:'Affirmative: Subject + had been + V-ing. | Negative: Subject + had not been + V-ing. | Interrogative: Had + subject + been + V-ing?',use:'अतीत के किसी दूसरे बिंदु या घटना तक जारी गतिविधि की अवधि बताने के लिए। अवधि या ongoing process पर विशेष ज़ोर होता है।',signals:'for, since, how long, before, when (past reference point के साथ)',affirm:['They had been waiting for an hour when the bus arrived. — बस आने पर वे एक घंटे से इंतज़ार कर रहे थे।','She had been teaching for ten years before she moved. — स्थान बदलने से पहले वह दस साल से पढ़ा रही थी।','The engine had been running for hours before it stopped. — बंद होने से पहले इंजन घंटों से चल रहा था।'],negative:['They had not been waiting long when the bus arrived. — बस आने पर वे बहुत देर से इंतज़ार नहीं कर रहे थे।','She had not been teaching long when she moved. — स्थान बदलते समय उसे पढ़ाते हुए ज़्यादा समय नहीं हुआ था।','The engine had not been running for long before it stopped. — बंद होने से पहले इंजन ज़्यादा देर से नहीं चल रहा था।'],question:['Had they been waiting for an hour when the bus arrived? — क्या बस आने पर वे एक घंटे से इंतज़ार कर रहे थे?','How long had she been teaching before she moved? — स्थान बदलने से पहले वह कितने समय से पढ़ा रही थी?','Had the engine been running all night? — क्या इंजन पूरी रात चल रहा था?'],mistake:'Had been + V-ing का संबंध past reference point से होता है; केवल past duration बताने के लिए हर बार इसका प्रयोग नहीं होता।'},
+{name:'Future Indefinite / Simple',group:'Future',structure:'Affirmative: Subject + will + V1. | Negative: Subject + will not + V1. | Interrogative: Will + subject + V1?',use:'भविष्य की भविष्यवाणी, तत्काल निर्णय, वादा, प्रस्ताव या willingness व्यक्त करने के लिए। योजनाओं के लिए going to और present continuous भी स्वाभाविक विकल्प हो सकते हैं।',signals:'tomorrow, next week, soon, probably, I think, one day',affirm:['The museum will open a new gallery tomorrow. — संग्रहालय कल नई गैलरी खोलेगा।','I will help you with the project. — मैं परियोजना में तुम्हारी मदद करूँगा/करूँगी।','Scientists will continue exploring space. — वैज्ञानिक अंतरिक्ष की खोज जारी रखेंगे।'],negative:['The museum will not open on Monday. — संग्रहालय सोमवार को नहीं खुलेगा।','I will not forget your advice. — मैं तुम्हारी सलाह नहीं भूलूँगा/भूलूँगी।','They will not waste the resources. — वे संसाधन बर्बाद नहीं करेंगे।'],question:['Will the museum open tomorrow? — क्या संग्रहालय कल खुलेगा?','Will you help me with the project? — क्या तुम परियोजना में मेरी मदद करोगे?','When will the results arrive? — परिणाम कब आएँगे?'],mistake:'Will के बाद V1: will go, will study (न कि will goes / will went)।'},
+{name:'Future Continuous',group:'Future',structure:'Affirmative: Subject + will be + V-ing. | Negative: Subject + will not be + V-ing. | Interrogative: Will + subject + be + V-ing?',use:'भविष्य के किसी निश्चित समय पर जारी रहने वाली गतिविधि, अनुमानित routine या विनम्रता से किसी की योजना पूछने के लिए।',signals:'this time tomorrow, at 6 p.m. next Monday, at noon, later tonight',affirm:['At noon, the researchers will be testing the instrument. — दोपहर में शोधकर्ता उपकरण की जाँच कर रहे होंगे।','This time tomorrow, I will be travelling to Delhi. — कल इस समय मैं दिल्ली जा रहा/रही होऊँगा/होऊँगी।','The students will be taking their exam at 10 a.m. — विद्यार्थी सुबह 10 बजे परीक्षा दे रहे होंगे।'],negative:['I will not be using the lab this afternoon. — मैं आज दोपहर प्रयोगशाला का उपयोग नहीं कर रहा/रही होऊँगा/होऊँगी।','They will not be staying overnight. — वे रात भर नहीं रुक रहे होंगे।','She will not be working at midnight. — वह आधी रात को काम नहीं कर रही होगी।'],question:['Will the researchers be testing the instrument at noon? — क्या शोधकर्ता दोपहर में उपकरण की जाँच कर रहे होंगे?','Will you be travelling tomorrow? — क्या तुम कल यात्रा कर रहे होगे?','What will they be doing at 10 a.m.? — वे सुबह 10 बजे क्या कर रहे होंगे?'],mistake:'Structure में will be + V-ing; will being या will be + V1-ing जैसे रूप न बनाएँ।'},
+{name:'Future Perfect',group:'Future',structure:'Affirmative: Subject + will have + V3. | Negative: Subject + will not have + V3. | Interrogative: Will + subject + have + V3?',use:'भविष्य के किसी deadline या समय तक पूरा हो जाने वाला काम बताने के लिए।',signals:'by Friday, by then, before, by the end of the year',affirm:['By Friday, the class will have completed the project. — शुक्रवार तक कक्षा परियोजना पूरी कर चुकी होगी।','By 2030, scientists will have developed new methods. — 2030 तक वैज्ञानिक नए तरीके विकसित कर चुके होंगे।','She will have reached home by 7 p.m. — वह शाम 7 बजे तक घर पहुँच चुकी होगी।'],negative:['The class will not have completed the project by Friday. — कक्षा शुक्रवार तक परियोजना पूरी नहीं कर चुकी होगी।','They will not have built the bridge by June. — वे जून तक पुल नहीं बना चुके होंगे।','I will not have finished the book by tomorrow. — मैं कल तक किताब पूरी नहीं कर चुका/चुकी होऊँगा/होऊँगी।'],question:['Will the class have completed the project by Friday? — क्या कक्षा शुक्रवार तक परियोजना पूरी कर चुकी होगी?','Will she have reached home by 7 p.m.? — क्या वह शाम 7 बजे तक घर पहुँच चुकी होगी?','How many chapters will you have read by Monday? — सोमवार तक तुम कितने अध्याय पढ़ चुके होगे?'],mistake:'Will have के बाद V3: will have written, will have done, will have gone।'},
+{name:'Future Perfect Continuous',group:'Future',structure:'Affirmative: Subject + will have been + V-ing. | Negative: Subject + will not have been + V-ing. | Interrogative: Will + subject + have been + V-ing?',use:'भविष्य के किसी समय तक किसी गतिविधि की कुल अवधि पर ज़ोर देने के लिए। रोज़मर्रा की भाषा में यह अपेक्षाकृत कम आता है, लेकिन formal/exam grammar में महत्त्वपूर्ण है।',signals:'by next June, for ten years by then, by the time, how long',affirm:['By June, she will have been teaching for ten years. — जून तक उसे पढ़ाते हुए दस साल हो चुके होंगे।','By 6 p.m., we will have been travelling for eight hours. — शाम 6 बजे तक हमें यात्रा करते हुए आठ घंटे हो चुके होंगे।','Next month, they will have been living here for a year. — अगले महीने उन्हें यहाँ रहते हुए एक साल हो जाएगा।'],negative:['By June, she will not have been teaching for ten years. — जून तक उसे पढ़ाते हुए दस साल पूरे नहीं हुए होंगे।','We will not have been travelling for eight hours by 6 p.m. — शाम 6 बजे तक हमें यात्रा करते हुए आठ घंटे नहीं हुए होंगे।','They will not have been living here for a year by next month. — अगले महीने तक उन्हें यहाँ रहते हुए एक साल नहीं हुआ होगा।'],question:['Will she have been teaching for ten years by June? — क्या जून तक उसे पढ़ाते हुए दस साल हो चुके होंगे?','How long will you have been travelling by 6 p.m.? — शाम 6 बजे तक तुम्हें यात्रा करते हुए कितना समय हो चुका होगा?','Will they have been living here for a year next month? — क्या अगले महीने उन्हें यहाँ रहते हुए एक साल हो जाएगा?'],mistake:'पूरा formula याद रखें: will + have + been + V-ing; since/for की अवधि और future reference point दोनों स्पष्ट होने चाहिए।'}
+];
+let tenseSub=0;
+function tenseDetailHTML(){
+ const d=tenseDetails[tenseSub];
+ const buttons=tenseDetails.map((x,i)=>`<button class="tab ${i===tenseSub?'active':''}" data-tensesub="${i}">${i+1}. ${x.name}</button>`).join('');
+ const section=(title,arr)=>`<div class="item"><h3>${title}</h3><ol>${arr.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
+ return `<div class="card"><h2>🎯 12 Tenses — एक-एक करके सीखें</h2><p>Present, Past और Future के 12 अलग-अलग Tense चुनें। हर पाठ में formula, उपयोग, संकेत शब्द, affirmative, negative, interrogative के उदाहरण और सामान्य गलतियाँ दी गई हैं।</p><h3>Present Tense</h3><div class="tabs">${buttons.split('</button>').slice(0,4).map(x=>x+'</button>').join('')}</div><h3>Past Tense</h3><div class="tabs">${buttons.split('</button>').slice(4,8).map(x=>x+'</button>').join('')}</div><h3>Future Tense</h3><div class="tabs">${buttons.split('</button>').slice(8,12).map(x=>x+'</button>').join('')}</div><div class="notice"><b>${d.group} Tense • ${d.name}</b><p>${d.use}</p><p><b>Formula:</b> ${d.structure}</p><p><b>Signal words:</b> ${d.signals}</p></div>${section('Affirmative — सकारात्मक वाक्य',d.affirm)}${section('Negative — नकारात्मक वाक्य',d.negative)}${section('Interrogative — प्रश्नवाचक वाक्य',d.question)}<div class="notice"><b>Common mistake / Exam tip:</b> ${d.mistake}</div><div class="actions"><button class="btn secondary" id="tensePrev">← पिछला Tense</button><button class="btn" id="tenseNext">अगला Tense →</button></div></div>`;
+}
+
+function renderContent(){
+ let t=getTopic(),c=document.getElementById('content');
+ if(view==='lessonview'){
+  c.innerHTML=`<h2>📖 ${t.name} — Complete Lesson</h2><p>${t.intro}</p>${t.key==='tense'?tenseDetailHTML():''}${t.key==='tense'?'':`<h3>Core Rules</h3>${t.rules.map((r,i)=>`<div class="item"><span class="badge">Rule ${i+1}</span><h3>${r[0]}</h3><p>${r[1]}</p><p class="en">${r[2]}</p><p class="hi">${r[3]}</p></div>`).join('')}`}<div class="notice"><b>Advanced insight:</b> ${t.extra}</div><h3>Teacher’s 4-step method</h3><ol><li>Sentence में subject, verb और time/meaning पहचानें।</li><li>Rule या structure चुनें।</li><li>Auxiliary, verb form, pronoun और word order जाँचें।</li><li>अपने उत्तर का कारण एक वाक्य में लिखें।</li></ol>`;
+  if(t.key==='tense'){
+   c.querySelectorAll('[data-tensesub]').forEach(b=>b.onclick=()=>{tenseSub=Number(b.dataset.tensesub);renderContent()});
+   document.getElementById('tensePrev').onclick=()=>{tenseSub=(tenseSub+11)%12;renderContent()};
+   document.getElementById('tenseNext').onclick=()=>{tenseSub=(tenseSub+1)%12;renderContent()};
+  }
+ }else if(view==='examples'){
+  const data=examplesFor(t);c.innerHTML=`<h2>💡 ${t.name}: Practice Examples</h2><p class="small">हर उदाहरण के साथ विषय/क्रिया के अनुसार बनाया गया embedded SVG चित्र, English sentence, हिंदी अर्थ और grammar का कारण है। चित्र इंटरनेट के बिना भी खुलेंगे। खोजकर उदाहरण ढूँढें; इस संस्करण में उच्च-गुणवत्ता वाले curated patterns को अभ्यास के लिए क्रमांकित किया गया है।</p><div class="controls"><input id="search" type="search" placeholder="Search English / Hindi / rule..." value="${searchText.replace(/"/g,'&quot;')}"><select id="filter"><option value="all">All patterns</option><option value="GK / Concept">GK / Concept</option><option value="Structure">Structure</option><option value="Exam Pattern">Exam Pattern</option><option value="Advanced Use">Advanced Use</option></select></div><div id="list"></div><div class="actions"><button class="btn secondary" id="prev">← Previous</button><span id="pageInfo" class="small"></span><button class="btn secondary" id="next">Next →</button></div>`;
+  document.getElementById('search').oninput=e=>{searchText=e.target.value;page=0;paintExamples(data)};
+  document.getElementById('filter').onchange=e=>{filterType=e.target.value;page=0;paintExamples(data)};
+  document.getElementById('prev').onclick=()=>{page=Math.max(0,page-1);paintExamples(data)};
+  document.getElementById('next').onclick=()=>{page=Math.min(49,page+1);paintExamples(data)};
+  paintExamples(data);
+ }else if(view==='practice'){
+  const data=exercisesFor(t);c.innerHTML=`<h2>✍️ ${t.name}: Practice Exercises</h2><p>पहले प्रश्न हल करें, फिर “उत्तर और कारण” खोलें। प्रश्नों में अलग-अलग subjects, objects, tenses और grammar patterns दिए गए हैं।</p><div class="controls"><input id="exsearch" type="search" placeholder="Search exercise..." value="${searchText.replace(/"/g,'&quot;')}"><select id="exfilter"><option value="all">All exercises</option><option value="0">Questions 1–100</option><option value="1">Questions 101–200</option><option value="2">Questions 201–300</option><option value="3">Questions 301–400</option><option value="4">Questions 401–500</option></select></div><div id="exlist"></div><div class="actions"><button class="btn secondary" id="eprev">← Previous</button><span id="epageInfo" class="small"></span><button class="btn secondary" id="enext">Next →</button></div>`;
+  document.getElementById('exsearch').oninput=e=>{searchText=e.target.value;page=0;paintExercises(data)};
+  document.getElementById('exfilter').onchange=e=>{filterType=e.target.value;page=0;paintExercises(data)};
+  document.getElementById('eprev').onclick=()=>{page=Math.max(0,page-1);paintExercises(data)};
+  document.getElementById('enext').onclick=()=>{page=Math.min(49,page+1);paintExercises(data)};
+  paintExercises(data);
+ }else if(view==='verbforms'){
+  c.innerHTML=`<h2>🔤 Verb Forms Lab</h2><p>V1 = base form • V2 = past simple • V3 = past participle • V-ing = -ing form</p><input id="vsearch" type="search" placeholder="Verb खोजें: arise, seek, teach..."><div id="verbtable"></div><div class="notice"><b>ध्यान दें:</b> कुछ verbs के accepted variants होते हैं, जैसे prove → proved/proven और bear → borne/born; सही विकल्प context और variety पर निर्भर करता है। “lie” (लेटना) का V2 “lay” है, जबकि “lay” (रखना) का V2 “laid” है।</div>`;
+  function paintVerbs(q=''){let rows=verbs.filter(v=>v.join(' ').toLowerCase().includes(q.toLowerCase()));document.getElementById('verbtable').innerHTML=`<table><thead><tr><th>V1</th><th>V2</th><th>V3</th><th>V-ing</th><th>अर्थ</th></tr></thead><tbody>${rows.map(v=>`<tr>${v.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`}
+  paintVerbs();document.getElementById('vsearch').oninput=e=>paintVerbs(e.target.value);
+ }else{
+  let data=exercisesFor(t);let picked=[data[4],data[17],data[28],data[39],data[50],data[61],data[72],data[83],data[94],data[105]];
+  c.innerHTML=`<h2>🏆 Quick Test — ${t.name}</h2><p>10 प्रश्न • हर प्रश्न 1 अंक • उत्तर चुनकर Check Test दबाएँ।</p><form id="testform">${picked.map((q,i)=>`<div class="question"><b>${i+1}. ${q.q}</b>${q.options.map(o=>`<label><input type="radio" name="q${i}" value="${o.replace(/"/g,'&quot;')}"> ${o}</label>`).join('')}<div class="answer" id="ta${i}"><b>उत्तर:</b> ${q.answer}<br>${q.reason}</div></div>`).join('')}<button class="btn" type="button" id="checktest">Check Test</button> <button class="btn light" type="reset" id="resettest">Reset</button><p id="score"></p></form>`;
+  document.getElementById('checktest').onclick=()=>{let score=0;picked.forEach((q,i)=>{let chosen=document.querySelector(`input[name=q${i}]:checked`);let ans=document.getElementById('ta'+i);ans.classList.add('show');if(chosen&&chosen.value===q.answer)score++});document.getElementById('score').innerHTML=`<b>Your score: ${score}/10 (${score*10}%)</b>`};
+  document.getElementById('resettest').onclick=()=>setTimeout(()=>{document.querySelectorAll('.answer').forEach(a=>a.classList.remove('show'));document.getElementById('score').textContent=''},0);
+ }
+}
+function paintExamples(data){
+ let q=(searchText||'').toLowerCase(),f=filterType;
+ let filtered=data.filter(x=>(f==='all'||x.tag===f)&&(!q||(x.sentence+' '+x.meaning+' '+x.why).toLowerCase().includes(q)));
+ let start=page*10,items=filtered.slice(start,start+10);
+ document.getElementById('list').innerHTML=items.length?items.map(x=>`<div class="item"><span class="badge">Example ${x.n} • ${x.tag}</span><div class="en">${x.sentence}</div><div class="hi">${x.meaning}</div><div class="actions"><button class="btn light" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">Rule / Explanation</button></div><div class="answer">${x.why}</div></div>`).join(''):'<p>कोई matching example नहीं मिला। Search बदलकर देखें।</p>';
+ document.getElementById('pageInfo').textContent=`Page ${Math.floor(start/10)+1} • ${filtered.length} results`;
+ document.getElementById('prev').disabled=page===0;document.getElementById('next').disabled=start+10>=filtered.length;
+}
+function paintExercises(data){
+ let q=(searchText||'').toLowerCase(),f=filterType;
+ let filtered=data.filter(x=>(f==='all'||Math.floor((x.n-1)/100)===Number(f))&&(!q||(x.q+' '+x.answer+' '+x.reason+' '+x.related).toLowerCase().includes(q)));
+ let start=page*10,items=filtered.slice(start,start+10);
+ document.getElementById('exlist').innerHTML=items.length?items.map(x=>`<div class="question"><span class="badge">Exercise ${x.n}</span><p><b>${x.q}</b></p><div class="actions"><button class="btn light" onclick="this.parentElement.nextElementSibling.classList.toggle('show')">उत्तर और कारण</button></div><div class="answer"><b>उत्तर:</b> ${x.answer}<br><b>कारण:</b> ${x.reason}<br><span class="small">संबंधित उदाहरण: ${x.related}</span></div></div>`).join(''):'<p>कोई matching exercise नहीं मिला। Search बदलकर देखें।</p>';
+ document.getElementById('epageInfo').textContent=`Page ${Math.floor(start/10)+1} • ${filtered.length} results`;
+ document.getElementById('eprev').disabled=page===0;document.getElementById('enext').disabled=start+10>=filtered.length;
+}
+renderLesson();renderContent();
+</script>
+</body></html>
